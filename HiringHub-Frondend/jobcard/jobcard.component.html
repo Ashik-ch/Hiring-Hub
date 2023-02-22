@@ -1,0 +1,45 @@
+<app-navbaruser></app-navbaruser>
+
+<div class="d-flex">
+  <input type="search" placeholder="Searchbar" class="form-control m-3 " style="width: 200px; ">
+  <button class="btn btn-primary btn-md m-3" style="height: 35px;">search</button>
+</div>
+
+
+<div class="container row " style="margin-left: 100px;">
+  <!-- Card Wider -->
+  <div class="card card-cascade wider m-4" *ngFor="let t of elements" style="width: 300px;">
+
+    <!-- Card image -->
+    <div routerLink="jobview/{{t.id}}">
+      <div class="view view-cascade overlay">
+        <img class="card-img-top" src="{{t.imageToUrl}}" style="height: 250px; width: 300px;" alt="Card image cap">
+        <a href="#!">
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+      <!-- Card content -->
+      <div class="card-body card-body-cascade text-center pb-0">
+
+        <!-- Title -->
+        <h4 class="card-title text-primary"><strong>{{t.jobname}}</strong></h4>
+        <!-- Subtitle -->
+        <h5 class="blue-text pb-2"><strong>{{t.place}}</strong></h5>
+        <!-- Text -->
+        <p class="card-text">{{t.description}} </p>
+        <p class=" text-dark">Read more.. <i class=" fa-solid fa-up-right-from-square text-dark"></i></p>
+
+
+        <div class="card-footer text-muted text-center mt-4">
+          Posted on - {{t.time}}
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- Card Wider -->
+
+
+</div>

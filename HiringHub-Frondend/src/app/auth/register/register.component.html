@@ -1,0 +1,288 @@
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+    <div class="container py-4">
+        <div class="row g-0 align-items-center">
+
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="card cascading-right" style="
+          background: hsla(0, 0%, 100%, 0.55);
+          backdrop-filter: blur(30px);">
+
+                    <mdb-tabs [justified]="true">
+
+                        <mdb-tab title="Employee">
+                            <div class="card-body p-5 shadow-5 ">
+                                <h2 class="fw-bold mb-4 text-center">Register</h2>
+                                <form [formGroup]="registerform" (ngSubmit)="register()">
+
+                                    <!-- 2 column grid layout with text inputs for the first and last names -->
+                                    <div class="row">
+
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="radio" role="switch" checked
+                                                formControlName="type" name="type" value="employye">
+                                            <label class="form-check-label" for="flexSwitchCheckChecked"> Employee
+                                            </label>
+                                            <div class="text-danger mb-2"
+                                            *ngIf="this.registerform.get('type')?.errors&&this.registerform.get('type')?.touched">
+                                           invalid </div>
+
+
+                                            <!-- Fullname -->
+                                            <div class=" mb-3">
+                                                <div class="form-outline">
+                                                    <input type="text" class="form-control" formControlName="name"
+                                                        name="name" />
+                                                    <div class="d-flex mt-2">
+                                                        <label class="form-label me-5 " for="form3Example1">Full
+                                                            name</label>
+                                                        <label class="text-danger ms-5"
+                                                            *ngIf="this.registerform.get('name')?.errors&&this.registerform.get('name')?.touched">
+                                                            Include only letters </label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <!-- Age -->
+                                                <div class="col-md-6 mb-2">
+                                                    <div class="form-outline">
+                                                        <input type="text" class="form-control" formControlName="age"
+                                                            name="age" />
+                                                        <label class="form-label mt-2" for="form3Example1">Age</label>
+                                                        <div class="text-danger mb-2"
+                                                        *ngIf="this.registerform.get('age')?.errors&&this.registerform.get('age')?.touched">
+                                                        Include age </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Gender -->
+                                                <div class="col-md-6 mt-2">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="gender"
+                                                            id="inlineRadio1" formControlName="gender" value="male" />
+                                                        <label class="form-check-label " for="inlineRadio1">Male</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="gender"
+                                                            id="inlineRadio2" formControlName="gender" value="female" />
+                                                        <label class="form-check-label"
+                                                            for="inlineRadio2">Female</label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <!--Contact Number -->
+                                            <div class="form-outline mb-2">
+                                                <input type="text" class="form-control" formControlName="mobile"
+                                                    name="mobile" />
+                                                <label class="form-label mt-2" for="form3Example4">Contact
+                                                    Number</label>
+                                                <div class="text-danger mb-2"
+                                                    *ngIf="this.registerform.get('mobile')?.errors&&this.registerform.get('mobile')?.touched">
+                                                    Number </div>
+                                            </div>
+                                            <!-- Email input -->
+                                            <div class="form-outline mb-2">
+                                                <input type="email" id="form3Example3" class="form-control"
+                                                    formControlName="email" name="email" />
+                                                <label class="form-label mt-2" for="form3Example3">Email address</label>
+                                                <div class="text-danger mb-2"
+                                                    *ngIf="this.registerform.get('email')?.errors&&this.registerform.get('email')?.touched">
+                                                    Include email </div>
+
+                                            </div>
+                                            <!-- Password input -->
+                                            <div class="form-outline mb-42">
+                                                <input type="password" class="form-control" formControlName="password"
+                                                    name="password" />
+                                                <label class="form-label mt-2" for="form3Example4">Password</label>
+                                                <div class="text-danger mb-2"
+                                                    *ngIf="this.registerform.get('password')?.errors&&this.registerform.get('password')?.touched">
+                                                    Include password </div>
+                                            </div>
+                                            <!-- Checkbox -->
+                                            <div class="form-check d-flex mb-4  ">
+                                                <input class="form-check-input  m-1 " type="checkbox" checked />
+                                                <label class="form-check-label " for="form2Example33">
+                                                    Terms & Condition
+                                                </label>
+                                            </div>
+                                            <!-- Submit button -->
+                                            <div class="d-flex justify-content-center">
+                                                <button type="submit" class="btn btn-primary btn-block mb-4">
+                                                    Sign up
+                                                </button>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <p class="me-4">Already have Account? <a href="login"> Login</a></p>
+                                                <!-- icons -->
+                                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                                    <i class="fab fa-facebook-f"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                                    <i class="fab fa-google"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                                    <i class="fab fa-twitter"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                                    <i class="fab fa-github"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </mdb-tab>
+
+
+                        <mdb-tab title="Company">
+                            <div class="card-body p-5 shadow-5 ">
+                                <h2 class="fw-bold mb-4 text-center">Register</h2>
+                                <form [formGroup]="registerform">
+
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="radio" role="switch" checked
+                                            formControlName="type" name="type" value="company">
+                                        <label class="form-check-label" for="flexSwitchCheckChecked">Company
+                                        </label>
+                                        <div class="text-danger mb-2"
+                                        *ngIf="this.registerform.get('type')?.errors&&this.registerform.get('type')?.touched">
+                                       Invalid </div>
+                                    </div>
+
+                                    <!-- 2 column grid layout with text inputs for the first and last names -->
+                                    <div class="row">
+                                        <!-- name -->
+                                        <div class=" mb-3">
+                                            <div class="form-outline">
+                                                <input type="text" class="form-control" formControlName="name"
+                                                    name="name" />
+                                                <label class="form-label mt-2" for="form3Example1">Full name</label>
+                                                <label class="text-danger ms-5"
+                                                *ngIf="this.registerform.get('name')?.errors&&this.registerform.get('name')?.touched">
+                                                Include only letters </label>
+                                            </div>
+                                        </div>
+                                        <!-- name -->
+                                        <div class=" mb-3">
+                                            <div class="form-outline">
+                                                <input type="text" class="form-control" formControlName="companyname"
+                                                    name="companyname" />
+                                                <label class="form-label mt-2" for="form3Example1">Company Name</label>
+                                                <label class="text-danger ms-5"
+                                                        *ngIf="this.registerform.get('companyname')?.errors&&this.registerform.get('companyname')?.touched">
+                                                        Include only letters </label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <!-- companytype -->
+                                            <div class="col-md-6 mb-2">
+                                                <div class="form-outline">
+                                                    <input type="text" class="form-control"
+                                                        formControlName="companytype" name="companytype" />
+                                                    <label class="form-label mt-2" for="form3Example1">Type of
+                                                        Company</label>
+                                                        
+                                                </div>
+                                            </div>
+                                            <!-- position -->
+                                            <div class="col-md-6 mt-2">
+                                                <div class="form-outline">
+                                                    <input type="text" class="form-control" formControlName="position"
+                                                        name="position" />
+                                                    <label class="form-label mt-2" for="form3Example1">Position</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Password input -->
+                                        <div class="form-outline mb-2">
+                                            <input type="text" class="form-control" formControlName="mobile"
+                                                name="mobile" />
+                                            <label class="form-label mt-2" for="form3Example4">Contact Number</label>
+                                            <label class="text-danger ms-5"
+                                            *ngIf="this.registerform.get('mobile')?.errors&&this.registerform.get('mobile')?.touched">
+                                            
+                                        mobile numbers </label>
+                                         </div>
+                                        <!-- Email input -->
+                                        <div class="form-outline mb-2">
+                                            <input type="email" class="form-control" formControlName="email" />
+                                            <label class="form-label mt-2" for="form3Example3">Email address</label>
+                                        </div>
+
+                                        <div
+                                            *ngIf="registerform.get('email')?.errors&&this.registerform.get('email')?.touched">
+                                            Inavlid</div>
+
+                                        <div *ngIf="registerform.get('email')?.invalid && (registerform.get('email')?.dirty
+                                            || registerform.get('email')?.touched)">  Inavlid dirty
+                                            
+            
+                                        </div>
+
+                                        <!-- Password input -->
+                                        <div class="form-outline mb-42">
+                                            <input type="password" class="form-control" formControlName="password"
+                                                name="password" />
+                                            <label class="form-label mt-2" for="form3Example4">Password</label>
+                                            <label class="text-danger ms-5"
+                                            *ngIf="this.registerform.get('password')?.errors&&this.registerform.get('password')?.touched">
+                                            invalid password </label></div>
+
+                                        <!-- Checkbox -->
+                                        <div class="form-check d-flex mb-4  ">
+                                            <input class="form-check-input  m-1" type="checkbox" checked />
+
+                                            <label class="form-check-label " for="form2Example33">
+                                                Terms & Condition
+                                            </label>
+                                        </div>
+
+                                        <!-- Submit button -->
+                                        <div class="d-flex justify-content-center">
+                                            <button type="submit" class="btn btn-primary btn-block mb-4"
+                                                (click)="register()">
+                                                Sign up
+                                            </button>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <p class="me-4">Already have Account? <a href="login"> Login</a></p>
+                                            <button type="button" class="btn btn-link btn-floating mx-1">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </button>
+
+                                            <button type="button" class="btn btn-link btn-floating mx-1">
+                                                <i class="fab fa-google"></i>
+                                            </button>
+
+                                            <button type="button" class="btn btn-link btn-floating mx-1">
+                                                <i class="fab fa-twitter"></i>
+                                            </button>
+
+                                            <button type="button" class="btn btn-link btn-floating mx-1">
+                                                <i class="fab fa-github"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                          </mdb-tab> 
+
+                    </mdb-tabs>
+
+                </div>
+            </div>
+
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <!-- <img src="../../../assets/c.jpg" class="w-100 rounded-4 shadow-4 " alt=""
+                    style="margin-left: -17px;;" /> -->
+            </div>
+        </div>
+    </div>
+    <!-- Jumbotron -->
+</section>

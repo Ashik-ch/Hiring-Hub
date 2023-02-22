@@ -1,0 +1,33 @@
+// .card {
+//     margin: auto;
+//     width: 50%;
+//     background-color: rgba(255, 255, 255, 0.8);
+//     padding: 20px;
+//     border-radius: 10px;
+//     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+// }
+
+#img  {
+    background-image: url("../../../assets/b.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+ 
+    align-items: center;
+    justify-content: center;
+}
+
+// #card {
+//     z-index: 1;
+// }
+
+
+.cascading-right {
+    margin-right: -50px;
+}
+
+@media (max-width: 991.98px) {
+    .cascading-right {
+        margin-right: 0;
+    }
+}

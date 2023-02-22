@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+
+<div class="card  " style="max-width: 900px;">
+  <div class="row g-0" *ngFor="let t of elements">
+    <div class="col-md-4 align-middle">
+      <img src="{{t.imageToUrl}}" class="img-fluid rounded-start align-middle " />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body  text-secondary">
+        <div class=" d-flex justify-content-between">
+          <h1 class="card-title text-danger"><b> {{t.jobname}} </b></h1>
+          <button type="button" class="btn btn-outline-primary rounded-pill text-end" id="applybtn" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">
+             Apply ->
+          </button>
+        </div>
+
+        <hr>
+        <h4 class="card-text  text-dark"><b>Description: </b> {{t.description}} </h4>
+        <div class="card-text">
+          <h3 class="text-dark">Company: {{t.company}} </h3>
+          <h3 class="text-dark">Location: {{t.place}} </h3>
+          <h3 class="text-dark">Posted on: {{t.time }} </h3>
+          <h3 class="text-dark">Contact: {{t.number }} </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Button trigger modal -->
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

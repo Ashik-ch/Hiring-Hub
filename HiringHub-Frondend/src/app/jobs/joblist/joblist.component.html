@@ -1,0 +1,143 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+
+    <div class="d-flex">
+        <input type="search" placeholder="Searchbar" class="form-control my-3  " style="width: 200px; "
+            [(ngModel)]="term" >
+
+        <!-- for search -->
+        <!-- <input type="text" [(ngModel)]="term"  placeholder="Search here...."  > -->
+
+
+        <button type="button" class="btn btn-dark my-3  " data-bs-toggle="modal" data-bs-target="#exampleModal"
+            style="width: 120px; height: 35px;     margin-left: 800px;"> + Add Job
+        </button>
+
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-primary " id="exampleModalLabel"> Add Job</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="text-center text-success ">
+                        <form action="">
+                            <div><input type="text" class="form-control" placeholder="jobname" [(ngModel)]="jobname"
+                                    name="jobname"> <br>
+                                <input type="text" class="form-control" placeholder="description"
+                                    [(ngModel)]="description" name="description"><br>
+                                <input type="text" class="form-control" placeholder="place" [(ngModel)]="place"
+                                    name="place"> <br>
+                                <input type="date" class="form-control" placeholder="Date" [(ngModel)]="time"
+                                    name="Date"><br>
+                                <input type="text" class="form-control" placeholder="company" [(ngModel)]="company"
+                                    name="company"> <br>
+                                <input type="text" class="form-control" placeholder="number" [(ngModel)]="number"
+                                    name="number">
+                                <input type="file" class="form-control" placeholder="Image" [(ngModel)]="image"
+                                    name="image">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-primary" (click)="addjob()">ADD</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- <p  [(ngModel)]="datm"  > Post date: {{today | date}}</p> -->
+
+    <!-- table -->
+    <table class="table align-middle mb-0 bg-white table-bordered">
+        <thead class="bg-light">
+            <tr>
+                <th> Icon</th>
+                <th>Name</th>
+                <th>Decription</th>
+                <th>location</th>
+                <th>Time</th>
+                <th>contact</th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="elements.length<1">
+                <div colspan="7"> No Jobs Found </div>
+            </tr>
+            <tr *ngFor="let t of elements | filter:term">
+                <td>
+                    <div class="d-flex align-items-center">
+                        <img src="{{t.image}}" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                    </div>
+                </td>
+                <td>
+                    <div class="ms-3">
+                        <p class="fw-bold mb-1">{{t.jobname}}</p>
+                        <pre class="text-muted m-2">{{t.company}}</pre>
+                    </div>
+                </td>
+                <td>
+                    <p class="fw-normal mb-1"> {{t.description}}</p>
+                    <p class="text-muted mb-0"></p>
+                </td>
+                <td>
+                    <span class=" rounded-pill ">{{t.place}}</span>
+                </td>
+                <td>{{t.time}}</td>
+                <td>{{t.number}}</td>
+                <td style="width: 40px;">
+                    <button type="button" class="btn btn-link btn-sm btn-rounded">
+                        <i class="fa-solid fa-file-pen "></i> </button>
+                    <hr>
+                    <button type="button" class="btn btn-link btn-sm btn-rounded" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">
+                        <i  class="fa-solid fa-trash-can"></i> </button>
+
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure to wand to Delete
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" (click)="btnclick(t.id)">Confirm</button>
+
+            </div> 
+
+
+        </div>
+    </div>
+</div> -->
+
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>
+
+
+
+<!-- Modal -->

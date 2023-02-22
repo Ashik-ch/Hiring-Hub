@@ -1,0 +1,15 @@
+img {
+    margin-left: -12px;
+
+}
+
+
+.card{
+    transition: transform 0.2s;
+    transform: scale(1);
+}
+
+.card:hover{
+    
+    transform: scale(1.1);
+}
