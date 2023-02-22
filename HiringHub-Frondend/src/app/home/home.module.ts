@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from '../home/navbar/navbar.component';
+import { NavbarComponent } from './navbaruser/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-// import { JobsModule } from '../jobs/jobs.module';
 import { HomeRoutingModule } from './home-routing.module';
-// import { AuthModule } from '../auth/auth.module';
+import { AlertModule } from '@coreui/angular';
 
 
 
@@ -13,13 +12,16 @@ import { HomeRoutingModule } from './home-routing.module';
   declarations: [
     NavbarComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+   
   ],
   imports: [
     CommonModule,
-    // JobsModule,
+    
     HomeRoutingModule,
-    // AuthModule
+
+    AlertModule,
+   
   
   ],
   exports: [

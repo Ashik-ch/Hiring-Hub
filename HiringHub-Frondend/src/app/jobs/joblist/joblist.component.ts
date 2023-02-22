@@ -44,7 +44,11 @@ export class JoblistComponent {
   joblist() {
     this.service.joblist()
       .subscribe((result: any) => {
-        this.elements = result.data['companyname']
+        console.log("res",result);
+        
+        this.elements = result.data
+        console.log("res2",result.data);
+
         console.log("Elements:", this.elements)
 
         // id genration

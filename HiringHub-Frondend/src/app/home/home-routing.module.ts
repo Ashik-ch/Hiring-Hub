@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { JobcardComponent } from '../jobs/jobcard/jobcard.component';
+
 import { HomeComponent } from './home/home.component';
-import { NavbarComponent } from '../admin/navbar/navbar.component';
+// import { NavbarComponent } from '../admin/navbar/navbar.component';
+import { ApplyComponent } from '../jobs/apply/apply.component';
+import { JoblistComponent } from '../jobs/joblist/joblist.component';
 
 
 const routes: Routes = [
-  { path: 'nav', component: NavbarComponent },
-  { path: '', component: HomeComponent },
-  
+  { path: 'user', component: HomeComponent },
+  // { path: 'nav', component: NavbarComponent },
+
+  { path: 'apply', component: ApplyComponent },
+  { path: 'joblist', component: JoblistComponent },
+
 
 
 

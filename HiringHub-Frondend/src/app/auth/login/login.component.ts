@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]],
     password: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]],
   })
+  name: any;
 
   constructor(private service: AuthserviceService, private rout: Router, private fb: FormBuilder) { }
 
@@ -36,21 +37,23 @@ export class LoginComponent implements OnInit {
 
           this.type = result.data["type"]
           this.companyname = result.data["companyname"]
+          this.name = result.data["name"]
 
           localStorage.setItem("email", JSON.stringify(email));
           localStorage.setItem("type", JSON.stringify(this.type));
-          console.log(`email: ${email} type: ${this.type}  companyname:  ${this.companyname} `);
+          localStorage.setItem("companyname", JSON.stringify(this.companyname));
+          console.log(`email: ${email} type: ${this.type}  companyname:  ${this.companyname} - ${this.name} `);
 
           if (this.type == "company") {
 
-            localStorage.setItem("companyname", JSON.stringify(this.companyname));
-            this.rout.navigateByUrl('adminhome')
+            localStorage.setItem("name", JSON.stringify(this.name));
+            this.rout.navigate(['adminhome'])
 
           }
           else if (this.type == "employye") {
 
-            localStorage.setItem("companyname", JSON.stringify(this.companyname));
-            this.rout.navigateByUrl('home')
+            localStorage.setItem("name", JSON.stringify(this.name));
+            this.rout.navigateByUrl('home/user')
           }
 
         }, (result) => {

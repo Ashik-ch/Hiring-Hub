@@ -53,7 +53,6 @@ const login = (email, password) => {
 }
 
 
-
 const addjob = (jobname, description, place, time, company, number, id) => {
     return db.Job.findOne({ jobname })
         .then(data => {
@@ -76,40 +75,6 @@ const addjob = (jobname, description, place, time, company, number, id) => {
         })
 }
 
-
-
-
-
-
-
-
-
-const deletejob = (jobname) => {
-    return db.Job.findOne({ jobname })
-        .then((result) => {
-            if (result) {
-                return {
-                    result,
-                    status: true,
-                    message: "Deletered  successfully",
-                    statuscode: 200,
-                    "jobname": jobname
-                }
-            }
-            else {
-                return {
-                    status: false,
-                    message: "Deletered  failed",
-                    statuscode: 400
-                }
-            }
-        })
-}
-
-
-
-
-
 const joblist = () => {
     return db.Job.find()
         .then(data => {
@@ -130,6 +95,8 @@ const joblist = () => {
         })
 }
 
+
+
 const jobcardview = (id) => {
     return db.Job.find({ id })
         .then(data => {
@@ -142,6 +109,35 @@ const jobcardview = (id) => {
             }
         })
 }
+
+const deletejob = (id) => {
+  
+    return db.Job.deleteOne({ id })
+        .then((result) => {
+            console.log("result", result);
+            if (result) {
+                return {
+                    result,
+                    status: true,
+                    message: "Deletered  successfully",
+                    statuscode: 200,
+                    "id": id
+                }
+            }
+            else {
+                return {
+                    status: false,
+                    message: "Deletered  failed",
+                    statuscode: 400
+                }
+            }
+        })
+}
+
+
+
+
+
 
 
 //export

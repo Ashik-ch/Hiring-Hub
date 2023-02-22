@@ -21,13 +21,13 @@ app.use(cors({
 app.use(express.json())
 
 // to Resolve client http requesapp.post('/register', (req, res) => {
-   // to Resolve client http reques
+// to Resolve client http reques
 app.post('/register', (req, res) => {
     service.register(req.body.name, req.body.age, req.body.mobile, req.body.email, req.body.password, req.body.gender, req.body.type, req.body.position, req.body.companyname, req.body.companytype)
         .then(data => {
             res.status(data.statuscode).json(data)
         })
-}) 
+})
 
 app.post('/login', (req, res) => {
     service.login(req.body.email, req.body.password)
@@ -36,31 +36,12 @@ app.post('/login', (req, res) => {
         })
 })
 
-
 app.post('/jobs', (req, res) => {
     service.addjob(req.body.jobname, req.body.description, req.body.place, req.body.time, req.body.company, req.body.number, req.body.id)
         .then(data => {
             res.status(data.statuscode).json(data)
         })
 })
-
-// app.put('/jobs', (req, res) => {
-//     service.addjob(req.body.jobname, req.body.description, req.body.place, req.body.time, req.body.company, req.body.number)
-//         .then(data => {
-//             res.status(data.statuscode).json(data)
-//         })
-// })
-
-app.delete('/joblist/:jobname'), (req, res) => {
-    service.deletejob(req.params.jobname)
-        .then(data => {
-            if (result) {
-                res.status(data.statuscode).json(data)
-            }
-        })
-}
-
-
 
 app.get('/jobs', (req, res) => {
     service.joblist()
@@ -70,13 +51,30 @@ app.get('/jobs', (req, res) => {
 })
 
 
-
 app.get('/jobview/:id', (req, res) => {
     service.jobcardview(req.params.id)
         .then(data => {
             res.status(data.statuscode).json(data)
         })
 })
+
+
+
+app.delete('/joblist/:id', (req, res) => {
+
+    service.deletejob(req.params.id)
+        .then(data => {
+            if (data) {
+                console.log("aa1", data)
+                res.status(data.statuscode).json(data)
+            }
+        })
+})
+ 
+
+
+
+
 
 
 

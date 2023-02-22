@@ -2,38 +2,35 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'app-navbaruser',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
 
-
-  email: any 
-  type:any
+  email: any
+  type: any
+  name: any
 
   constructor(private rout: Router) { }
-  
-  
+
   ngOnInit() {
-    this.email = localStorage.getItem("companyname")
-    console.log("adminemail", this.email);
-  
-    this.type= localStorage.getItem("type")
-    console.log("admintype", this.type);
-   }
 
 
+    this.email = JSON.parse(localStorage.getItem("email") || "")
+    this.type = JSON.parse(localStorage.getItem("type") || "")
+    this.name = JSON.parse(localStorage.getItem("name") || "")
 
-  // jobclick() {
-  //   this.rout.navigateByUrl('jobs')
+ 
+    console.log(`email: ${this.email} type: ${this.type}  name:  ${this.name}`);
 
-  // }
-
-  joblistclick() {
-    this.rout.navigateByUrl('joblist')
 
   }
+
+
+
+
+
 
 
   login() {
