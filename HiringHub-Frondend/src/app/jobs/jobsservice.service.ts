@@ -16,22 +16,26 @@ export class JobsserviceService {
     return this.http.get('http://localhost:3000/jobs')
   }
 
-  addjob(jobname: any, description: any, place: any, time: any, company: any, number: any, image: any) {
+  addjob(jobname: any, description: any, place: any, time: any, company: any, number: any, image: any, pincode: any) {
     const id = Number(this.currentMaxid) + 1
-    console.log("id", this.currentMaxid);
     const body = {
-      jobname, description, place, time, company, number, id, image
+      jobname, description, place, time, company, number, id, image, pincode
     }
     return this.http.post('http://localhost:3000/jobs', body)
   }
 
-  viewcard(jobname: any): Observable<any> { 
+  viewcard(jobname: any): Observable<any> {
     return this.http.get('http://localhost:3000/jobview/' + jobname)
   }
- 
-  // delete(id: any): Observable<any> { 
-  //   console.log("deleteid", id);
-  //   return this.http.delete('http://localhost:3000/joblist/' + id)
-  // }
+
+
+  feedback(name: any, feedback: any, email: any, type: any) {
+    const body = {
+      name, feedback, email, type
+    }
+    return this.http.post('http://localhost:3000/feedback', body)
+  }
+
+
 
 }

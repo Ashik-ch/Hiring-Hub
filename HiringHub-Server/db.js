@@ -33,11 +33,42 @@ const Job = mongoose.model('Job', {
     time: String,
     company: String,
     number: Number,
-    id: Number 
+    id: Number,
+    pincode: Number
 })
 
+const Feedback = mongoose.model('Feedback', {
+    name: String,
+    email: String,
+    type: String,
+    feedback: Array
+})
+
+const Apply = mongoose.model('Apply', {
+    name: String,
+    email: String,
+    jobname: String,
+    company: String
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //4 export fot using in other files
-module.exports = { User, Job } 
- 
+module.exports = { User, Job, Feedback, Apply }
+
 
 

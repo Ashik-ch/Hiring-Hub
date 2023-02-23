@@ -1,22 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-expand-sm navbar-light bg-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-expand-sm navbar-light bg-light">
     <div class="container-fluid">
-
-
-        <!-- Collapsible wrapper -->
-        <div class="collapse navbar-collapse" id="navbarLeftAlignExample">
-            <!-- Left links -->
+              <div class="collapse navbar-collapse" id="navbarLeftAlignExample">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"> <a class="nav-link active mx-3" aria-current="page" href='adminhome'
                         *ngIf="type==='company'">Home</a> </li>
                 <li class="nav-item"> <a class="nav-link active mx-3" aria-current="page" href='home/user'
                         *ngIf="type==='employye'">Home</a> </li>
                 <li class="nav-item" mx-3> <a href="jobs" class="nav-link">Jobs</a> </li>
-
                 <li class="nav-item mx-3"> <a class="nav-link" href="apply" *ngIf="type==='employye'">Apply</a> </li>
                 <li class="nav-item"> <a href="joblist" *ngIf="type==='company'" class="nav-link">Jobslist</a> </li>
             </ul>
-
-
             <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav ms-auto">
                     <li class="nav-item dropdown">
@@ -24,53 +17,89 @@
                         <ul class="dropdown-menu  dropdown-menu-end ">
                             <a class="dropdown-item">Profile</a>
                             <a class="dropdown-item">Settings</a>
-
                             <div class="dropdown-divider"></div>
                             <li><button class="dropdown-item" type="button" (click)="logout()">Logout</button></li>
-
                         </ul>
                     </li>
                 </ul>
             </div>
+        </div>
+    </div>
+</nav> -->
 
 
 
+
+<header>
+  <nav class="navbar nn navbar-expand-lg fixed-top navbar-scroll  navbar-dark d-none d-lg-block">
+    <div class="container-fluid">
+
+      <ng-container class="opc">
+
+        <a class="navbar-brand" href="adminhome" *ngIf="type==='company'">Hiring Hub</a>
+        <a class="navbar-brand" href="home/user" *ngIf="type==='employye'">Hiring Hub</a>
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+          data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="adminhome" *ngIf="type==='company'">Home</a>
+              <a class="nav-link active" aria-current="page" href="home/user" *ngIf="type==='employye'">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="jobs" class="nav-link">Jobs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="apply" *ngIf="type==='employye'">Apply</a>
+            </li>
+            <li class="nav-item">
+              <a href="joblist" *ngIf="type==='company'" class="nav-link">Jobslist</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">Contact</a>
+            </li>
+          </ul>
+        </div>
+        
+      </ng-container>
+      <ng-container class="opcc">
+      
+
+
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav ms-auto">
+            <div class="opcc"> 
+            <li class="nav-item dropdown">
+
+              
+              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> {{name}}</a>
+           
+              <ul class="dropdown-menu  dropdown-menu-end ">
+               
+                <a class="dropdown-item">Profile</a>
+                <a class="dropdown-item">Settings</a>
+             
+                <div class="dropdown-divider"></div>
+                <li><button class="dropdown-item" type="button" (click)="logout()">Logout</button></li>
+
+              </ul>
+           
+            </li>
+          </div>
+          </ul>
         </div>
 
+      </ng-container>
+        
     </div>
-</nav>
+  </nav>
 
 
-<c-navbar colorScheme="light" expand="lg" [ngStyle]="{ backgroundColor: '#e3f2fd' }">
-    <c-container fluid>
-      <a cNavbarBrand href="https://coreui.io/angular/" target="_blank">
-        Navbar
-      </a>
-      <button [cNavbarToggler]="collapseRef3"></button>
-      <div #collapseRef3="cCollapse" navbar cCollapse>
-        <c-navbar-nav class="me-auto mb-2 mb-lg-0">
-          <c-nav-item>
-            <a cNavLink active>Home</a>
-          </c-nav-item>
-          <c-nav-item>
-            <a cNavLink>Link</a>
-          </c-nav-item>
-          <c-dropdown variant="nav-item" [popper]="false">
-            <a cDropdownToggle cNavLink>Dropdown</a>
-            <ul cDropdownMenu [ngStyle]="{ backgroundColor: '#e3f2fd' }">
-              <li><button cDropdownItem>Action</button></li>
-              <li><button cDropdownItem>Another action</button></li>
-              <li><button cDropdownItem>Something else here</button></li>
-            </ul>
-          </c-dropdown>
-          <c-nav-item>
-            <a cNavLink disabled class="d-block d-lg-none d-xl-block">Disabled</a>
-          </c-nav-item>
-        </c-navbar-nav>
-        <form cForm class="d-flex" role="search">
-          <input cFormControl type="search" placeholder="Search" aria-label="Search" class="me-2">
-          <button cButton color="success" variant="outline">Search</button>
-        </form>
-      </div>
-    </c-container>
-  </c-navbar> -->
+</header>

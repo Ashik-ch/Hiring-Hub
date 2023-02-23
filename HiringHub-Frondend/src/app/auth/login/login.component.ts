@@ -38,22 +38,19 @@ export class LoginComponent implements OnInit {
           this.type = result.data["type"]
           this.companyname = result.data["companyname"]
           this.name = result.data["name"]
-
           localStorage.setItem("email", JSON.stringify(email));
           localStorage.setItem("type", JSON.stringify(this.type));
           localStorage.setItem("companyname", JSON.stringify(this.companyname));
           console.log(`email: ${email} type: ${this.type}  companyname:  ${this.companyname} - ${this.name} `);
 
           if (this.type == "company") {
-
             localStorage.setItem("name", JSON.stringify(this.name));
-            this.rout.navigate(['adminhome'])
+            this.rout.navigate(['home'])
 
           }
           else if (this.type == "employye") {
-
             localStorage.setItem("name", JSON.stringify(this.name));
-            this.rout.navigateByUrl('home/user')
+            this.rout.navigateByUrl('home')
           }
 
         }, (result) => {

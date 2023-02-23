@@ -37,7 +37,7 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/jobs', (req, res) => {
-    service.addjob(req.body.jobname, req.body.description, req.body.place, req.body.time, req.body.company, req.body.number, req.body.id)
+    service.addjob(req.body.jobname, req.body.description, req.body.place, req.body.time, req.body.company, req.body.number, req.body.id, req.body.pincode)
         .then(data => {
             res.status(data.statuscode).json(data)
         })
@@ -70,7 +70,20 @@ app.delete('/joblist/:id', (req, res) => {
             }
         })
 })
- 
+
+
+
+app.post('/feedback', (req, res) => {
+    service.feedback(req.body.name, req.body.email, req.body.type, req.body.feedback)
+        .then(data => {
+            res.status(data.statuscode).json(data)
+        })
+})
+
+
+
+
+
 
 
 

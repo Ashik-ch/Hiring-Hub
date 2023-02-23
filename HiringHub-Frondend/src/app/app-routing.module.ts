@@ -6,11 +6,11 @@ import { LoginComponent } from './auth/login/login.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
 
-  {
-    path: 'adminhome',
-    loadChildren: () => import('./admin/admin.module')
-      .then(mdl => mdl.AdminModule)
-  },
+  // {
+  //   path: 'adminhome',
+  //   loadChildren: () => import('./admin/admin.module')
+  //     .then(mdl => mdl.AdminModule)
+  // },
 
   {
     path: 'home',

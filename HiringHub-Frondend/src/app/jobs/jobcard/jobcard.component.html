@@ -1,7 +1,7 @@
 <app-navbaruser></app-navbaruser>
 
-<div class="">
-  <input type="search" placeholder="Searchbar" class="form-control   " style="width: 247px;  margin-left: 135px;  margin-top: 30px;" [(ngModel)]="term">  
+<div class="mt-5 pt-4">
+  <input type="search" placeholder="Searchbar" class="form-control" style="width: 247px;  margin-left: 135px; " [(ngModel)]="term">  
 </div>
 
 
@@ -17,7 +17,6 @@
           <div class="mask rgba-white-slight"></div>
         </a>
       </div>
-
       <!-- Card content -->
       <div class="card-body card-body-cascade text-center pb-0">
 
@@ -25,10 +24,10 @@
         <h4 class="card-title text-primary"><strong>{{t.jobname}}</strong></h4>
         <!-- Subtitle -->
         <h5 class="blue-text pb-2"><strong>{{t.place}}</strong></h5>
+        <h5 class="blue-text pb-2"><strong>{{t.pincode}}</strong></h5>
         <!-- Text -->
         <p class="card-text">{{t.description}} </p>
         <p class=" text-dark">Read more.. <i class=" fa-solid fa-up-right-from-square text-dark"></i></p>
-
 
         <div class="card-footer text-muted text-center mt-4">
           Posted on - {{t.time}}

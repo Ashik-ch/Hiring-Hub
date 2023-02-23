@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { JobsserviceService } from '../jobsservice.service';
@@ -26,6 +26,7 @@ export class JoblistComponent {
   id: any
   image:any
   term: any;
+  pincode:any
 
 
 
@@ -44,12 +45,8 @@ export class JoblistComponent {
   joblist() {
     this.service.joblist()
       .subscribe((result: any) => {
-        console.log("res",result);
-        
         this.elements = result.data
-        console.log("res2",result.data);
-
-        console.log("Elements:", this.elements)
+          console.log("Elements:", this.elements)
 
         // id genration
         let maxId = 0
@@ -63,20 +60,11 @@ export class JoblistComponent {
       })
   }
 
-  clicked() {
-    if (this.show = 1) {
-      this.show = 0
-    }
-    else if (this.show = 0) {
-      this.show = 1
-    }
-  }
-
   addjob() {
-    this.service.addjob(this.jobname, this.description, this.place, this.time, this.company, this.number, this.image)
+    this.service.addjob(this.jobname, this.description, this.place, this.time, this.company, this.number, this.image, this.pincode)
       .subscribe((result: any) => {
-        console.log("result", result)
-        console.log(":elements2:", this.elements)
+        console.log("resultadjob", result)
+      
         alert(result.message)
         location.reload()
       }
@@ -86,7 +74,10 @@ export class JoblistComponent {
  
   btnclick(id: any) {
     this.http.delete('http://localhost:3000/joblist/' + id)
-      .subscribe(() => {
+      .subscribe((result) => {
+        console.log("id",id);
+        console.log("resuldet",result);
+        
         location.reload()
       })
   }
@@ -94,31 +85,7 @@ export class JoblistComponent {
 
 
 
-  delete(id: any) {
-    //   console.log("dadadta", id);
-
-    //   this.service.delete(id)
-    //     .subscribe((result: any) => {
-    //       console.log("111", result);
-    //       alert(result.message)
-    //       console.log("deleting");
-
-    //       console.log("asdas", this.service.delete);
-
-    //       // .subscribe((result: any) => {
-    //       //   alert(result.message)
-    //       //   console.log("deleting");
-
-    //       // },
-    //       //   ((result) => {
-    //       //     alert(result.error.message)
-
-    // )
-
-
-
-
-  }
+  
 
   jobcard() {
     this.service.joblist()
@@ -133,7 +100,6 @@ export class JoblistComponent {
 
 
 
-  onChange() { }
 }
 
 

@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { HomeComponent } from './home/home.component';
-// import { NavbarComponent } from '../admin/navbar/navbar.component';
 import { ApplyComponent } from '../jobs/apply/apply.component';
 import { JoblistComponent } from '../jobs/joblist/joblist.component';
+import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
-  { path: 'user', component: HomeComponent },
-  // { path: 'nav', component: NavbarComponent },
-
+  { path: '', component: HomeComponent},
+  
   { path: 'apply', component: ApplyComponent },
   { path: 'joblist', component: JoblistComponent },
+  { path: 'joblist', component: JoblistComponent },
+  { path: 'about', component: AboutComponent },
 
 
 

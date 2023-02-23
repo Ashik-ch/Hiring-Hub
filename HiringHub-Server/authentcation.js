@@ -53,7 +53,7 @@ const login = (email, password) => {
 }
 
 
-const addjob = (jobname, description, place, time, company, number, id) => {
+const addjob = (jobname, description, place, time, company, number, id, pincode) => {
     return db.Job.findOne({ jobname })
         .then(data => {
             if (data) {
@@ -64,7 +64,7 @@ const addjob = (jobname, description, place, time, company, number, id) => {
                 }
             }
             else {
-                const newJob = new db.Job({ jobname, description, place, time, company, number, id })
+                const newJob = new db.Job({ jobname, description, place, time, company, number, id, pincode })
                 newJob.save()
                 return {
                     statuscode: 200,
@@ -111,7 +111,7 @@ const jobcardview = (id) => {
 }
 
 const deletejob = (id) => {
-  
+
     return db.Job.deleteOne({ id })
         .then((result) => {
             console.log("result", result);
@@ -136,9 +136,46 @@ const deletejob = (id) => {
 
 
 
+const feedback = (name, email, type, feedback) => {
+    return db.Feedback.findOne({ email })
+        .then(data => {
+            console.log(" data", data);
+            if (data) {
+                data.feedback.push(feedback)
+                data.save()
+                console.log(" data2", data);
+                return {
+                    statuscode: 200,
+                    status: true,
+                    message: "feedback  successfully",
+                    data
+                }
+            }
+            else {
+                const newFeedback = new db.Feedback({ name, email, type, feedback })
+                newFeedback.save()   //saving into database
+                return {
+                    statuscode: 202,
+                    status: true,
+                    message: "fedbkk successfully",
+                    newFeedback
+                }   
+            }
+            //             else {
+            // return {
+            //     statuscode: 400,
+            //     status: false,
+            //     message: "email not found",
+            //     newFeedback
+            // }
+
+        })
+}
+
+
 
 
 
 
 //export
-module.exports = { register, login, addjob, joblist, jobcardview, deletejob }
+module.exports = { register, login, addjob, joblist, jobcardview, deletejob, feedback }
