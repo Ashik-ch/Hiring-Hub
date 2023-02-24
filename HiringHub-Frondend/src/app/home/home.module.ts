@@ -8,6 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -19,13 +20,17 @@ import { HomeComponent } from './home/home.component';
     HomeComponent,
     AboutComponent,
     FeedbackComponent,
+    ProfileComponent,
    
   ],
   imports: [
     CommonModule,
     
     HomeRoutingModule,
-    FormsModule
+    FormsModule,
+
+   
+    
 
  
   

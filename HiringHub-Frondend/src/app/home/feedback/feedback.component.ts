@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { JobsserviceService } from 'src/app/jobs/jobsservice.service';
+import { HomserviceService } from '../homservice.service';
 
 @Component({
   selector: 'app-feedback',
@@ -12,9 +13,9 @@ export class FeedbackComponent {
   feedback: any
   email: any
   type: any
-  
 
-  constructor(private jobser: JobsserviceService) { }
+
+  constructor(private servc: HomserviceService) { }
   ngOnInit() {
 
 
@@ -26,7 +27,7 @@ export class FeedbackComponent {
 
 
   send() {
-    this.jobser.feedback(this.name, this.feedback, this.email, this.type)
+    this.servc.feedback(this.name, this.feedback, this.email, this.type)
       .subscribe(result => {
         console.log("result", result);
         alert(`Thank You  ${this.name}`)

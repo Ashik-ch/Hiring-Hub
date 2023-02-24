@@ -2,13 +2,16 @@
 const express = require('express')
 
 // importing dataservice
-const service = require('./authentcation')
+const auth = require('./authentcation')
+const service = require('./service')
 
 // to connect server with mongodb
 const cors = require('cors')
 
 // create server app using express
 const app = express()
+
+const PORT = process.env.PORT || 3000;
 
 // const router = express.Router();
 
@@ -23,14 +26,14 @@ app.use(express.json())
 // to Resolve client http requesapp.post('/register', (req, res) => {
 // to Resolve client http reques
 app.post('/register', (req, res) => {
-    service.register(req.body.name, req.body.age, req.body.mobile, req.body.email, req.body.password, req.body.gender, req.body.type, req.body.position, req.body.companyname, req.body.companytype)
+    auth.register(req.body.name, req.body.age, req.body.mobile, req.body.email, req.body.password, req.body.gender, req.body.type, req.body.position, req.body.companyname, req.body.companytype)
         .then(data => {
             res.status(data.statuscode).json(data)
         })
 })
 
 app.post('/login', (req, res) => {
-    service.login(req.body.email, req.body.password)
+    auth.login(req.body.email, req.body.password)
         .then(data => {
             res.status(data.statuscode).json(data)
         })
@@ -54,6 +57,7 @@ app.get('/jobs', (req, res) => {
 app.get('/jobview/:id', (req, res) => {
     service.jobcardview(req.params.id)
         .then(data => {
+            console.log("view", data);
             res.status(data.statuscode).json(data)
         })
 })
@@ -61,7 +65,6 @@ app.get('/jobview/:id', (req, res) => {
 
 
 app.delete('/joblist/:id', (req, res) => {
-
     service.deletejob(req.params.id)
         .then(data => {
             if (data) {
@@ -72,7 +75,7 @@ app.delete('/joblist/:id', (req, res) => {
 })
 
 
-
+// feedback send
 app.post('/feedback', (req, res) => {
     service.feedback(req.body.name, req.body.email, req.body.type, req.body.feedback)
         .then(data => {
@@ -80,9 +83,42 @@ app.post('/feedback', (req, res) => {
         })
 })
 
+// apply post user
+app.post('/apply', (req, res) => {
+    service.apply(req.body.email, req.body.jobname, req.body.company)
+        .then(data => {
+            res.json(data)
+        })
+})
+
+
+// get applied details admin
+app.get('/apply', (req, res) => {
+    service.appliedlist()
+        .then(data => {
+            res.status(data.statuscode).json(data)
+        })
+})
+
+
+// get applied details for user
+app.get('/myjobs/:email', (req, res) => {
+    service.applied(req.params.email)
+        .then(data => {
+            console.log("daa", data);
+            res.status(data.statuscode).json(data)
+        })
+})
 
 
 
+app.get('/profile/:email', (req, res) => {
+    service.profile(req.params.email)
+        .then(data => {
+            console.log("daa", data);
+            res.status(data.statuscode).json(data)
+        })
+});
 
 
 
@@ -96,6 +132,6 @@ app.post('/feedback', (req, res) => {
 
 
 // setup port for server
-app.listen(3000, () => {
-    console.log('server listening  the port number 3000')
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
 })

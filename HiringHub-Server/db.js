@@ -47,7 +47,7 @@ const Feedback = mongoose.model('Feedback', {
 const Apply = mongoose.model('Apply', {
     name: String,
     email: String,
-    jobname: String,
+    jobname: Array,
     company: String
 })
 

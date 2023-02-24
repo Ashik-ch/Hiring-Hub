@@ -4,6 +4,7 @@ import { ApplyComponent } from '../jobs/apply/apply.component';
 import { JoblistComponent } from '../jobs/joblist/joblist.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'joblist', component: JoblistComponent },
   { path: 'joblist', component: JoblistComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'profile/:email', component: ProfileComponent },
 
 
 

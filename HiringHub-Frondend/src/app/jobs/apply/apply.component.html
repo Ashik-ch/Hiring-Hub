@@ -1,3 +1,32 @@
 <app-navbaruser></app-navbaruser>
 
-<img src="../../assets/e.jpg" alt="" style="width: 800px; align-content: center;">
+<br>
+<br>
+<table class="container table align-middle mb-0 tbl table-bordered mt-5 pt-5 shadow-lg">
+    <thead class="bg-white text-dark mt-5">
+        <tr>
+            <th> Email</th>
+            <th>Jobname</th>
+            <th>Company</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let t of elements">
+            <td>
+                <div class=" ms-3">
+                    <p class=" mb-1">{{t.email}}</p>
+                </div>
+            </td>
+            <td>
+                <p class="fw-normal mb-1"> {{t.jobname}}</p>
+                <p class="text-muted mb-0"></p>
+            </td>
+            <td>
+                <span class=" rounded-pill ">{{t.company}}</span>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+

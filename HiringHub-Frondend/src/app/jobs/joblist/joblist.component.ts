@@ -72,7 +72,7 @@ export class JoblistComponent {
   }
 
  
-  btnclick(id: any) {
+  deletebtn(id: any) {
     this.http.delete('http://localhost:3000/joblist/' + id)
       .subscribe((result) => {
         console.log("id",id);

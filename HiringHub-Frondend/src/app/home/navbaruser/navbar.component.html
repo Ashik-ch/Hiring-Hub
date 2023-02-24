@@ -31,73 +31,68 @@
 
 
 <header>
-  <nav class="navbar nn navbar-expand-lg fixed-top navbar-scroll  navbar-dark d-none d-lg-block">
+  <nav class="navbar nn navbar-expand-lg fixed-top navbar-scroll  navbar-dark d-none d-lg-block ">
     <div class="container-fluid">
 
-      <ng-container class="opc">
-
-        <a class="navbar-brand" href="adminhome" *ngIf="type==='company'">Hiring Hub</a>
-        <a class="navbar-brand" href="home/user" *ngIf="type==='employye'">Hiring Hub</a>
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-          data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="adminhome" *ngIf="type==='company'">Home</a>
-              <a class="nav-link active" aria-current="page" href="home/user" *ngIf="type==='employye'">Home</a>
-            </li>
-
-            <li class="nav-item">
-              <a href="jobs" class="nav-link">Jobs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="apply" *ngIf="type==='employye'">Apply</a>
-            </li>
-            <li class="nav-item">
-              <a href="joblist" *ngIf="type==='company'" class="nav-link">Jobslist</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link">Contact</a>
-            </li>
-          </ul>
-        </div>
-        
-      </ng-container>
-      <ng-container class="opcc">
-      
 
 
-        <div id="navbarCollapse" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav ms-auto">
-            <div class="opcc"> 
+      <a class="navbar-brand" href="home">Hiring Hub</a>
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="home">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="jobs" class="nav-link">Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="apply" *ngIf="type==='company'">Application</a>
+            <a class="nav-link" href="jobs/myjobs/{{email}}" *ngIf="type==='employye'">MyJobs</a>
+            <!-- <a class="nav-link" href="jobs/myjobs/{{email}}" >MyJobs</a> -->
+          </li>
+          <li class="nav-item">
+            <a href="joblist" *ngIf="type==='company'" class="nav-link">Jobslist</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+
+
+
+
+      <div id="navbarCollapse" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav ms-auto">
+          <div class="opcc">
             <li class="nav-item dropdown">
 
-              
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> {{name}}</a>
-           
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> {{name}}</a>
+
               <ul class="dropdown-menu  dropdown-menu-end ">
-               
-                <a class="dropdown-item">Profile</a>
+                <a class="dropdown-item" href="profile/{{email}}">Profile</a>
                 <a class="dropdown-item">Settings</a>
-             
                 <div class="dropdown-divider"></div>
                 <li><button class="dropdown-item" type="button" (click)="logout()">Logout</button></li>
 
               </ul>
-           
+
             </li>
           </div>
-          </ul>
-        </div>
+        </ul>
+      </div>
 
-      </ng-container>
-        
+
+
     </div>
   </nav>
 
