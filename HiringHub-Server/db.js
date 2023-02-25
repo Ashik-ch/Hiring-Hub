@@ -34,7 +34,8 @@ const Job = mongoose.model('Job', {
     company: String,
     number: Number,
     id: Number,
-    pincode: Number
+    pincode: Number,
+    image:String
 })
 
 const Feedback = mongoose.model('Feedback', {

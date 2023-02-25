@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
     this.type = JSON.parse(localStorage.getItem("type") || "")
     this.name = JSON.parse(localStorage.getItem("name") || "")
 
- 
+
     console.log(`email: ${this.email} type: ${this.type}  name:  ${this.name}`);
 
 
@@ -39,7 +39,12 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.rout.navigateByUrl('login')
-    localStorage.removeItem('key')
+
+    localStorage.removeItem('name')
+    localStorage.removeItem('email')
+    localStorage.removeItem('companyname')
+    localStorage.removeItem('type')
+
   }
 
 

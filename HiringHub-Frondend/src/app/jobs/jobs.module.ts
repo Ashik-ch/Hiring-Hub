@@ -14,6 +14,8 @@ import { AdminModule } from '../admin/admin.module';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ApplyComponent } from './apply/apply.component';
 import { MyjobsComponent } from './myjobs/myjobs.component';
+import { UpdatejobsComponent } from './updatejobs/updatejobs.component';
+
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { MyjobsComponent } from './myjobs/myjobs.component';
         JobviewComponent,
         ApplyComponent,
         MyjobsComponent,
+        UpdatejobsComponent,
+        
 
     ],
 

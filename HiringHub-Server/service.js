@@ -5,7 +5,7 @@ const db = require('./db')
 
 
 
-const addjob = (jobname, description, place, time, company, number, id, pincode) => {
+const addjob = (jobname, description, place, time, company, number, id, pincode,image) => {
     return db.Job.findOne({ jobname })
         .then(data => {
             if (data) {
@@ -16,7 +16,7 @@ const addjob = (jobname, description, place, time, company, number, id, pincode)
                 }
             }
             else {
-                const newJob = new db.Job({ jobname, description, place, time, company, number, id, pincode })
+                const newJob = new db.Job({ jobname, description, place, time, company, number, id, pincode, image })
                 newJob.save()
                 return {
                     statuscode: 200,

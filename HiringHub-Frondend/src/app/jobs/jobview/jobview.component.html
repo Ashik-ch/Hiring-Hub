@@ -1,6 +1,44 @@
-<app-navbaruser></app-navbaruser>
+<section class="light">
+  <div class="container py-5 mt-5">
+    <div class="h1 text-center text-dark" id="pageHeaderTitle">Apply </div>
 
-<div class="card  " style="max-width: 900px;">
+    <article class="postcard light blue" *ngFor="let t of elements">
+      <a class="postcard__img_link">
+        <!-- <img class="postcard__img" src="https://picsum.photos/1000/1000" alt="Image Title" /> -->
+        <img class="postcard__img" src="{{t.image}}" alt="Image Title" />
+      </a>
+      <div class="postcard__text t-dark">
+        <h1 class="postcard__title blue"><a>{{t.jobname}}</a></h1>
+        <div class="postcard__subtitle small">
+          <time datetime="2020-05-25 12:00:00">
+            <i class="fas fa-calendar-alt mr-2"></i> {{t.time}}</time>
+        </div>
+        <div class="postcard__bar"></div>
+        <div class="postcard__preview-txt">Description: {{t.description}} Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Eligendi, fugiat
+          asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium
+          maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto
+          quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div> <br>
+        <div class="postcard__preview-txt"> <b>Location:</b> {{t.place}}</div>
+        <div class="postcard__preview-txt"> <b>Pincode: </b> {{t.pincode}}</div>
+        <div class="postcard__preview-txt"> <b>Number:</b> {{t.number}}</div>
+
+        <ul class="postcard__tagbox">
+          <li class="tag__item play blue">
+            <a (click)=" apply()"><i class="fas fa-play mr-2"></i> Apply</a>
+          </li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+
+
+
+ <!-- <div class="card  " style="max-width: 900px;">
   <div class="row g-0" *ngFor="let t of elements">
     <div class="col-md-4 align-middle">
       <img src="{{t.imageToUrl}}" class="img-fluid rounded-start align-middle " />
@@ -14,11 +52,11 @@
             data-bs-toggle="modal" data-bs-target="#exampleModal88x" (click)=" apply()">
             Apply
           </button>
-        
+
         </div>
-          <div class="d-flex">
-            <strong  class="text-dark">Company:  <cite>  {{t.company}}  </cite>  </strong>
-          </div>
+        <div class="d-flex">
+          <strong class="text-dark">Company: <cite> {{t.company}} </cite> </strong>
+        </div>
 
         <hr>
         <h4 class="card-text  text-dark"><b>Description: </b> {{t.description}} </h4>
@@ -35,17 +73,14 @@
     </div>
     <hr>
   </div>
-</div>
+</div> -->
 
 
-
-
-<!-- Button trigger modal -->
 
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -61,4 +96,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { retry } from 'rxjs';
 
 import { JobsserviceService } from '../jobsservice.service';
 
@@ -24,16 +25,16 @@ export class JoblistComponent {
   elements: any = []
   searchTerm: string = ''
   id: any
-  image:any
+  image: any
   term: any;
-  pincode:any
+  pincode: any
 
 
 
 
-  constructor(private service: JobsserviceService, private act: ActivatedRoute, private http: HttpClient) { }
+  constructor(private service: JobsserviceService, private http: HttpClient, private rout: Router) { }
 
-  collect: any= []
+  collect: any = []
 
   ngOnInit(): void {
 
@@ -46,7 +47,7 @@ export class JoblistComponent {
     this.service.joblist()
       .subscribe((result: any) => {
         this.elements = result.data
-          console.log("Elements:", this.elements)
+        console.log("Elements:", this.elements)
 
         // id genration
         let maxId = 0
@@ -64,28 +65,13 @@ export class JoblistComponent {
     this.service.addjob(this.jobname, this.description, this.place, this.time, this.company, this.number, this.image, this.pincode)
       .subscribe((result: any) => {
         console.log("resultadjob", result)
-      
+
         alert(result.message)
         location.reload()
       }
       )
   }
 
- 
-  deletebtn(id: any) {
-    this.http.delete('http://localhost:3000/joblist/' + id)
-      .subscribe((result) => {
-        console.log("id",id);
-        console.log("resuldet",result);
-        
-        location.reload()
-      })
-  }
-
-
-
-
-  
 
   jobcard() {
     this.service.joblist()
@@ -95,6 +81,21 @@ export class JoblistComponent {
 
       )
   }
+
+
+  deletebtn(id: any) {
+    this.http.delete('http://localhost:3000/joblist/' + id)
+      .subscribe((result) => {
+        console.log("id", id);
+        console.log("resuldet", result);
+        location.reload()
+      })
+  }
+
+
+
+
+
 
 
 

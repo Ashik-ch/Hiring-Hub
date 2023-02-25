@@ -40,7 +40,7 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/jobs', (req, res) => {
-    service.addjob(req.body.jobname, req.body.description, req.body.place, req.body.time, req.body.company, req.body.number, req.body.id, req.body.pincode)
+    service.addjob(req.body.jobname, req.body.description, req.body.place, req.body.time, req.body.company, req.body.number, req.body.id, req.body.pincode,  req.body.image)
         .then(data => {
             res.status(data.statuscode).json(data)
         })

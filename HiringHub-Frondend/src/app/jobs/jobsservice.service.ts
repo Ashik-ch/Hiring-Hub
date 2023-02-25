@@ -14,6 +14,9 @@ export class JobsserviceService {
   joblist() {
     return this.http.get('http://localhost:3000/jobs')
   }
+  joblis(id: any) {
+    return this.http.get('http://localhost:3000/jobs', id)
+  }
 
   addjob(jobname: any, description: any, place: any, time: any,
     company: any, number: any, image: any, pincode: any) {
@@ -27,7 +30,7 @@ export class JobsserviceService {
   }
 
 
-  
+
   apply(email: any, jobname: any, company: any) {
     const body = { email, jobname, company }
     return this.http.post('http://localhost:3000/apply', body)

@@ -5,6 +5,8 @@ import { JobcardComponent } from './jobcard/jobcard.component';
 import { JoblistComponent } from './joblist/joblist.component';
 import { JobviewComponent } from './jobview/jobview.component';
 import { MyjobsComponent } from './myjobs/myjobs.component';
+import { UpdatejobsComponent } from './updatejobs/updatejobs.component';
+
 
 const routes: Routes = [
   { path: '', component: JobcardComponent },
@@ -12,8 +14,10 @@ const routes: Routes = [
   { path: 'jobview/:jobname', component: JobviewComponent },
   { path: 'apply', component: ApplyComponent },
   { path: 'myjobs/:email', component: MyjobsComponent },
+  { path: 'update/:id', component: UpdatejobsComponent }
 
 
+ 
 ];
 
 @NgModule({

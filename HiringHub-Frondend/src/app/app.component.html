@@ -1,4 +1,8 @@
+<app-navbaruser
+    *ngIf="!(router.url === '/login' ||  router.url === '/register'||  router.url === '/' )"></app-navbaruser>
 
 <div>
     <router-outlet></router-outlet>
 </div>
+
+<app-footer *ngIf="!(router.url === '/login' ||  router.url === '/register'||  router.url === '/' )"></app-footer>
