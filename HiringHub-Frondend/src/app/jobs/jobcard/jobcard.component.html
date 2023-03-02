@@ -1,7 +1,8 @@
 <app-navbaruser></app-navbaruser>
 
-<div class="mt-5 pt-4">
-  <input type="search" placeholder="Searchbar" class="form-control" style="width: 247px;  margin-left: 135px; "
+
+<div class="mt-5 pt-4 ">
+  <input type="search" placeholder="Searchbar" class="form-control ps-2 " style="width: 247px; border-radius: 10px; ; height: 40px; margin-left: 135px; "
     [(ngModel)]="term">
 </div>
 
@@ -9,34 +10,21 @@
 <div class="container row " style="margin-left: 100px;">
   <!-- Card Wider -->
   <div class="card  card-cascade wider m-4" *ngFor="let t of elements  |filter:term" style="width: 300px;">
-
     <!-- Card image -->
     <div routerLink="jobview/{{t.id}}">
       <div class="view view-cascade overlay">
         <img class="card-img-top" src="{{t.image}}" style="height: 250px; width: 300px;" alt="Card image cap">
-
       </div>
       <!-- Card content -->
-      <div class="card-body card-body-cascade text-center pb-0">
-
-        <!-- Title -->
-        <h4 class="card-title  jname"><strong>{{t.jobname}}</strong></h4>
-        <!-- Subtitle -->
-        <h5 class="blue-text pb-2"><strong>{{t.place}}-{{t.pincode}}</strong></h5>
-        <!-- <h5 class="blue-text pb-2"><strong></strong></h5> -->
-        <!-- Text -->
-        <p class="card-text">{{t.description}} </p>
-        <p class=" text-dark">Read more.. <i class=" fa-solid fa-up-right-from-square text-dark"></i></p>
-
-        <div class="card-footer text-muted text-center mt-4">
-          Posted on - {{t.time}}
-        </div>
-
+      <div class="card__body">
+        <span class="tag tag-blue">View</span>
+        <h2>{{t.jobname}}</h2>
+        <p>Details: {{t.description}}</p>
+        <p class="">{{t.place}}-{{t.pincode}}</p>
+      </div>
+      <div class=" text-muted text-center mb-3 ">
+        Posted on - <span class="text-dark"> {{t.time}} </span>
       </div>
     </div>
-
   </div>
-  <!-- Card Wider -->
-
-
 </div>

@@ -1,21 +1,120 @@
-
-<div class="d-flex mt-5">
+<!-- <div class="d-flex mt-5">
     <div class="col-4"></div>
     <div class="col-4">
-    <form>
-       
-       
+        <form>
 
+ Message input 
+            <div class="form-outline mb-4">
+                <textarea class="form-control" id="form4Example3" rows="4" [(ngModel)]="feedback"
+                    name="feedback"></textarea>
+                <label class="form-label" for="form4Example3">Message</label>
+            </div>
+            -->
+<!-- <button type="button" class="btn text-light btn-block mb-4" (click)=" send()" data-bs-toggle="modal"
+                ta-bs-target="#exampleModal"></button> -->
+<!-- <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)=" send()"> Send
+            </button>
 
-
-        <!-- Message input -->
-        <div class="form-outline mb-4">
-            <textarea class="form-control" id="form4Example3" rows="4" [(ngModel)]="feedback" name="feedback"></textarea>
-            <label class="form-label" for="form4Example3">Message</label>
-        </div>
-   
-        <button type="submit" class="btn text-light btn-block mb-4" (click)=" send()">Send</button>
-    </form>
-</div>
+        </form>
+    </div>
     <div class="col-4"></div>
+</div> -->
+
+
+
+
+<!-- Modal 
+<div class="modal fade mt-5" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="container" *ngIf="popup==true">
+                <div id="success-box">
+                    <div class="face">
+                        <div class="eye"></div>
+                        <div class="eye right"></div>
+                        <div class="mouth happy"></div>
+                    </div>
+                    <div class="shadow scale"></div>
+                    <div class="message">
+                        <h1 class="alert">Thank You..!</h1>
+                    </div>
+                    <button class="button-box">
+                        <h1 class="blue">{{name}}</h1>
+                    </button>
+                </div>
+            </div>
+        </div>
+     
+    </div>
+</div>
+
+-->
+
+
+<div class="background">
+    <div class="container">
+        <div class="screen">
+            <div class="screen-header">
+                <div class="screen-header-left">
+                    <div class="screen-header-button close"></div>
+                    <div class="screen-header-button maximize"></div>
+                    <div class="screen-header-button minimize"></div>
+                    <div class="screen-header-button dis">
+                        <h1>Feedback</h1>
+                    </div>
+
+                </div>
+                <div class="screen-header-right">
+                    <div class="screen-header-ellipsis"></div>
+                    <div class="screen-header-ellipsis"></div>
+                    <div class="screen-header-ellipsis"></div>
+                </div>
+            </div>
+            <div class="screen-body">
+                <div class="screen-body-item left">
+                    <!--  -->
+                    <div id="success-box" *ngIf="popup==true">
+                        <div class="face">
+                            <div class="eye"></div>
+                            <div class="eye right"></div>
+                            <div class="mouth happy"></div>
+                        </div>
+                        <div class="shadow scale"></div>
+                        <div class="message">
+                            <h1 class="alert">Thank You..!</h1>
+                        </div>
+                        <button class="button-box">
+                            <h1 class="blue">{{name}}</h1>
+                        </button>
+                    </div>
+
+                    <!--  -->
+
+                </div>
+                <div class="screen-body-item">
+                    <form class="app-form" #myForm="ngForm">
+                        <div class="app-form-group buttons">
+                            <button class="app-form-button" (click)="resetForm()">CANCEL</button>
+                            <button type="submit" class="app-form-button" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" (click)=" send()">SEND</button>
+                        </div>
+                        <div class="app-form-group">
+                            <input class="app-form-control" placeholder="{{name}}" value="{{name}}">
+                        </div>
+                        <div class="app-form-group">
+                            <input class="app-form-control" placeholder="EMAIL" value="{{email}}">
+                        </div>
+
+                        <div class="app-form-group message mt-5 pt-4">
+                            <input class="app-form-control" placeholder="MESSAGE" [(ngModel)]="feedback"
+                                name="feedback">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>

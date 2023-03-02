@@ -24,27 +24,41 @@ export class UpdatejobsComponent {
   pincode: any
   paramsid: any
 
-  constructor(private ar: ActivatedRoute , private serv:JobsserviceService) {
+  body: any
+  bodyname: any
+
+  constructor(private ar: ActivatedRoute, private serv: JobsserviceService) {
 
   }
 
   ngOnInit() {
+
     this.ar.params
       .subscribe((data) => {
         this.paramsid = data['id']
-        console.log("da", this.paramsid);
+        console.log("paramsid", this.paramsid);
 
       })
+    this.serv.updatecard(this.paramsid)
+      .subscribe((result) => {
+        this.body = result.data[0]
+        this.bodyname = this.body.jobname
+        console.log("resulbody", this.body);
+        console.log("bodyname", this.bodyname);
+     
 
+
+      })
   }
 
 
-  updatejob() {
-    this.serv.joblis(this.paramsid)
-    .subscribe((result)=>{
-      console.log("result",result);
-      
-    })
+  updatejob(id: any) {
+    this.serv.viewcard(this.paramsid)
+      .subscribe((result) => {
+        this.body = result
+        console.log("result", this.body);
+
+      })
 
     alert("updated")
   }

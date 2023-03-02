@@ -28,6 +28,11 @@ export class JobsserviceService {
   viewcard(jobname: any): Observable<any> {
     return this.http.get('http://localhost:3000/jobview/' + jobname)
   }
+  
+
+  updatecard(id: any): Observable<any> {
+    return this.http.get('http://localhost:3000/jobview/' + id)
+  }
 
 
 

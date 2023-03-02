@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { JobsserviceService } from 'src/app/jobs/jobsservice.service';
 import { HomserviceService } from '../homservice.service';
 
@@ -13,7 +14,10 @@ export class FeedbackComponent {
   feedback: any
   email: any
   type: any
-
+  popup: any
+  
+  // reseting cancel in feedback
+  @ViewChild('myForm', { static: false }) myForm!: NgForm;
 
   constructor(private servc: HomserviceService) { }
   ngOnInit() {
@@ -30,9 +34,14 @@ export class FeedbackComponent {
     this.servc.feedback(this.name, this.feedback, this.email, this.type)
       .subscribe(result => {
         console.log("result", result);
-        alert(`Thank You  ${this.name}`)
+        this.popup = true
+        setTimeout(this.send, 2000);
         location.reload()
       })
 
+  }
+
+  resetForm() {
+    this.myForm.resetForm();
   }
 }

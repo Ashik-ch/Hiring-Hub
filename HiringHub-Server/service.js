@@ -27,6 +27,7 @@ const addjob = (jobname, description, place, time, company, number, id, pincode,
         })
 }
 
+
 const joblist = () => {
     return db.Job.find()
         .then(data => {

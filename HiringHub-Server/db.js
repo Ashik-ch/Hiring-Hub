@@ -9,6 +9,7 @@ mongoose.set('strictQuery', true);
 mongoose.connect('mongodb://127.0.0.1:27017/Jobs', {
     useNewUrlParser: true
 })
+
 // const uri = ('mongodb://localhost:27017/BANKAPP',
 //     () => {  console.log("mongoDb Connected");   });
 
