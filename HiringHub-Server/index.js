@@ -63,6 +63,15 @@ app.get('/jobview/:id', (req, res) => {
 })
 
 
+// uodate
+app.put('/jobs/update/:id', (req, res) => {
+    service.updatejob(req.body.jobname, req.body.description, req.body.place, req.body.time, req.body.company, req.body.number, req.body.id, req.body.pincode,  req.body.image)
+        .then(data => {
+            res.status(data.statuscode).json(data)
+        })
+})
+
+
 
 app.delete('/joblist/:id', (req, res) => {
     service.deletejob(req.params.id)
@@ -70,7 +79,7 @@ app.delete('/joblist/:id', (req, res) => {
             if (data) {
                 console.log("aa1", data)
                 res.status(data.statuscode).json(data)
-            }
+            } 
         })
 })
 

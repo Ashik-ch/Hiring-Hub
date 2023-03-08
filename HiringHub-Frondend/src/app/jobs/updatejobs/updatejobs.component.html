@@ -1,33 +1,42 @@
 <br>
 <br>
 <br>
-<div class="modal-body">
+<div class="row mt-4">
+    <div class="col-4"></div>
+
+    <div class="modal-body col-4">
+        <div class="text-center text-success container">
+            <form #updatejobform="ngForm" >
+
+                <div>
+                    <input type="text" class="form-control" placeholder="jobname" [(ngModel)]="body.jobname"
+                        name="jobname"> <br>
+                    <input type="text" class="form-control" placeholder="description" [(ngModel)]="body.description"
+                        name="description"><br>
+                    <input type="text" class="form-control" placeholder="place" [(ngModel)]="body.place" name="place">
+                    <br>
+                    <input type="text" class="form-control" placeholder="Pincode" [(ngModel)]="body.pincode"
+                        name="pincode">
+                    <br>
+                    <input type="date" class="form-control" placeholder="Date" [(ngModel)]="body.time" name="Date"><br>
+                    <input type="text" class="form-control" placeholder="company" [(ngModel)]="body.company"
+                        name="company">
+                    <br>
+                    <input type="text" class="form-control" placeholder="number" [(ngModel)]="body.number"
+                        name="number">
+                    <input type="file" class="form-control mt-3" placeholder="Image" [(ngModel)]="body.image"
+                        name="image">
+                </div>
+                <div class="modal-footer">
 
 
-    <div class="text-center text-success container">
-        <form action="" >
-            <div><input type="text" class="form-control" placeholder="jobname" [(ngModel)]="body.jobname"
-                    name="jobname">
-                <br>
+                    <button type="button" class="btn btn-dark" (click)="updatejob(updatejobform)">Update</button>
+                </div>
 
-                <input type="text" class="form-control" placeholder="description" [(ngModel)]="body.description"
-                    name="description"><br>
-                <input type="text" class="form-control" placeholder="place" [(ngModel)]="body.place" name="place"> <br>
-                <input type="text" class="form-control" placeholder="Pincode" [(ngModel)]="body.pincode" name="pincode">
-                <br>
-                <input type="date" class="form-control" placeholder="Date" [(ngModel)]="body.time" name="Date"><br>
-                <input type="text" class="form-control" placeholder="company" [(ngModel)]="body.company" name="company">
-                <br>
-                <input type="text" class="form-control" placeholder="number" [(ngModel)]="body.number" name="number">
-                <input type="file" class="form-control mt-3" placeholder="Image" [(ngModel)]="body.image" name="image">
-            </div>
-            <div class="modal-footer">
+            </form>
+        </div>
 
-
-                <button type="button" class="btn btn-dark" (click)="updatejob(id)">Update</button>
-            </div>
-
-        </form>
     </div>
 
+    <div class="col-4"></div>
 </div>

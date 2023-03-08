@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { retry } from 'rxjs';
+
 
 import { JobsserviceService } from '../jobsservice.service';
 
@@ -29,18 +29,28 @@ export class JoblistComponent {
   term: any;
   pincode: any
 
+  // datenew = new Date().getTime()
 
 
 
-  constructor(private service: JobsserviceService, private http: HttpClient, private rout: Router) { }
+  constructor(private service: JobsserviceService, private http: HttpClient) { }
 
   collect: any = []
 
   ngOnInit(): void {
-
     this.joblist()
 
+    const date = new Date(); // create a new date object with the current date and time
+    const day = date.getDate(); // get the day of the month (1-31)
+    const month = date.getMonth() + 1; // get the month (0-11) and add 1 to convert to (1-12)
+    const year = date.getFullYear(); // get the year (4 digits)
+    this.time = `${day}/${month}/${year}`; // create a formatted date string in the dd/mm/yyyy format
+    console.log(this.time); // output: "8/3/2023" (for example)
+
+
+
   }
+
 
 
   joblist() {
@@ -48,7 +58,6 @@ export class JoblistComponent {
       .subscribe((result: any) => {
         this.elements = result.data
         console.log("Elements:", this.elements)
-
         // id genration
         let maxId = 0
         var item = this.elements.length
@@ -65,7 +74,6 @@ export class JoblistComponent {
     this.service.addjob(this.jobname, this.description, this.place, this.time, this.company, this.number, this.image, this.pincode)
       .subscribe((result: any) => {
         console.log("resultadjob", result)
-
         alert(result.message)
         location.reload()
       }
@@ -77,9 +85,7 @@ export class JoblistComponent {
     this.service.joblist()
       .subscribe((result: any) => {
         this.elements = result.data
-      }
-
-      )
+      })
   }
 
 
@@ -88,18 +94,10 @@ export class JoblistComponent {
       .subscribe((result) => {
         console.log("id", id);
         console.log("resuldet", result);
+        // this.elements.splice(id, 1)
         location.reload()
       })
   }
-
-
-
-
-
-
-
-
-
 
 }
 

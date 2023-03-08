@@ -27,6 +27,7 @@ export class UpdatejobsComponent {
   body: any
   bodyname: any
 
+
   constructor(private ar: ActivatedRoute, private serv: JobsserviceService) {
 
   }
@@ -43,23 +44,24 @@ export class UpdatejobsComponent {
       .subscribe((result) => {
         this.body = result.data[0]
         this.bodyname = this.body.jobname
-        console.log("resulbody", this.body);
-        console.log("bodyname", this.bodyname);
-     
-
-
+        console.log("ParamsBody", this.body);
       })
   }
 
 
-  updatejob(id: any) {
-    this.serv.viewcard(this.paramsid)
-      .subscribe((result) => {
-        this.body = result
-        console.log("result", this.body);
 
+
+  updatejob(form: any) {
+    this.serv.updatejob(form.value.id,form.value.jobname, form.value.description, form.value.place, form.value.time,
+      form.value.company, form.value.number, form.value.pincode, form.value.image)
+      .subscribe((result: any) => {
+        console.log("resultadjob", result)
+        alert(result.message)
+        // location.reload()
+
+        alert("updated")
       })
+    console.log("resultsjob", this.updatejob)
 
-    alert("updated")
   }
 }

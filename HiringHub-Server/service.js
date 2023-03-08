@@ -5,7 +5,7 @@ const db = require('./db')
 
 
 
-const addjob = (jobname, description, place, time, company, number, id, pincode,image) => {
+const addjob = (jobname, description, place, time, company, number, id, pincode, image) => {
     return db.Job.findOne({ jobname })
         .then(data => {
             if (data) {
@@ -86,6 +86,36 @@ const deletejob = (id) => {
             }
         })
 }
+
+
+
+
+
+const updatejob = (jobname, description, place, time, company, number, id, pincode, image) => {
+    return db.Job.findOne({ jobname })
+        .then(data => {
+            if (data) {
+                const newJob = new db.Job({ jobname, description, place, time, company, number, id, pincode, image })
+                newJob.save()
+                return {
+                    statuscode: 200,
+                    status: true,
+                    message: "Job Add successfully",
+                }
+            }
+            else return {
+                statuscode: 400,
+                status: false,
+                message: "not exist"
+            }
+
+        })
+}
+
+
+
+
+
 
 
 // sending feedback
@@ -249,7 +279,7 @@ const applied = (email) => {
                 return {
                     statuscode: 400,
                     status: false,
-                    message: "not show"
+                    message: "not show" 
                 }
             }
         })
@@ -281,4 +311,4 @@ const profile = (email) => {
 
 
 //export
-module.exports = { addjob, joblist, jobcardview, deletejob, feedback, apply, appliedlist, applied, profile }
+module.exports = { addjob, joblist, jobcardview, deletejob, feedback, apply, appliedlist, applied, profile, updatejob }

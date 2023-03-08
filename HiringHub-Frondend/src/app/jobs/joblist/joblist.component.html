@@ -1,12 +1,12 @@
 <div class="container mt-5 pt-2">
 
+    <h4 class="text-dark mt-4">Time : {{time}}</h4>
+
     <div class="d-flex">
         <input type="search" placeholder="Searchbar" class="form-control my-3  " style="width: 200px; "
             [(ngModel)]="term">
-
         <!-- for search -->
         <!-- <input type="text" [(ngModel)]="term"  placeholder="Search here...."  > -->
-
         <button type="button" class="btn  my-3 addbtn " data-bs-toggle="modal" data-bs-target="#exampleModal"
             style="width: 120px; height: 35px;     margin-left: 800px;"> + Add Job
         </button>
@@ -32,14 +32,15 @@
                                     name="place"> <br>
                                 <input type="text" class="form-control" placeholder="Pincode" [(ngModel)]="pincode"
                                     name="pincode"> <br>
-                                <input type="date" class="form-control" placeholder="Date" [(ngModel)]="time"
-                                    name="Date"><br>
+
                                 <input type="text" class="form-control" placeholder="company" [(ngModel)]="company"
                                     name="company"> <br>
                                 <input type="text" class="form-control" placeholder="number" [(ngModel)]="number"
                                     name="number">
                                 <input type="file" class="form-control mt-3" placeholder="Image" [(ngModel)]="image"
-                                    name="image">
+                                    name="image"><br>
+                                <input type="text" class="form-control" placeholder="Date" [(ngModel)]="time"
+                                    name="Date">
                             </div>
 
                         </form>
@@ -69,7 +70,7 @@
     <!-- <p  [(ngModel)]="datm"  > Post date: {{today | date}}</p> -->
 
     <!-- table -->
-    <table class="table align-middle mb-0 bg-white table-bordered shadow">
+    <table class="table align-middle mb-0 bg-white table-bordered border border-2 shadow ">
         <thead class="text-light">
             <tr>
                 <th></th>
@@ -116,7 +117,7 @@
 
                 <td style="width: 40px;">
                     <a href="jobs/update/{{t.id}}">
-                        <button type="button" class="btn btn-link btn-sm btn-rounded"   >
+                        <button type="button" class="btn btn-link btn-sm btn-rounded">
 
                             <i class=" fa-solid fa-file-pen "></i> </button></a>
                     <hr>
