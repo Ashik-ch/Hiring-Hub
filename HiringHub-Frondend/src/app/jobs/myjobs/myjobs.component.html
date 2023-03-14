@@ -1,19 +1,41 @@
+<br><br>
 
-<br><br><br>
-<table class="container table align-middle mb-0 bg-white table-bordered mt-5 pt-5">
-    <thead class="">
+<!-- 
+<div class="container row " style="margin-left: 100px;">
+    <div class="card  card-cascade wider m-4" *ngFor="let item of elements" >   
+    <div class="view view-cascade overlay">
+      <img class="card-img-top" src="{{item.image}}" style="height: 250px; width: 300px;" alt="Card image cap">
+    </div>
+    
+    <div class="card__body" *ngFor="let t of elements">
+      <h2>{{t.jobname}}</h2>
+      <p>Details: {{t.description}}</p>
+      <p class="">{{t.place}}-{{t.pincode}}</p>
+      <div class=" text-muted text-center mb-3 ">
+        Posted on - <span class="text-dark"> {{t.time}} </span>
+      </div>
+    </div>
+
+  </div> -->
 
 
-        <tr>
-            <td>Company</td>
-            <td> {{elements.company}} </td>
-        </tr>
-        <tr>
-            <th> Jobname</th>
-            <td class="fw-normal mb-1 " *ngFor="let t of jobname"> {{t}}</td>
 
-        </tr>
-
-    </thead>
- 
+<table class="container table align-middle mb-0 bg-white table-bordered rounded-3 my-5 mb-5 pt-5">
+  <thead class="">
+    <tr class="clr fw-normal mb-1 ">
+      <th>Email</th>
+      <th>Jobname</th>
+      <th> Company </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of elements">
+      <td>{{ item.email }}</td>
+      <td>
+        <ul>
+          <li *ngFor="let jobName of item.jobname">{{ jobName }}</li>
+        </ul>
+      </td>
+      <td>{{ item.company }}</td>
+    </tr>
 </table>

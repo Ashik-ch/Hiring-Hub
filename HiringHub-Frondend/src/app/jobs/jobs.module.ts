@@ -41,6 +41,7 @@ import { UpdatejobsComponent } from './updatejobs/updatejobs.component';
         HomeModule,
         AdminModule,
         Ng2SearchPipeModule        //searching module
+
     ],
     exports: [
         JobcardComponent,

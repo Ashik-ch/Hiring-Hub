@@ -43,14 +43,14 @@ export class JobsserviceService {
     company: any, number: any, image: any, pincode: any, id: any) {
 
     const body = { jobname, description, place, time, company, number, image, pincode }
-    return this.http.put('http://localhost:3000/jobs/update/' + id , body)
+    return this.http.put('http://localhost:3000/jobs/update/' + id, body)
   }
 
 
 
 
-  apply(email: any, jobname: any, company: any) {
-    const body = { email, jobname, company }
+  apply(email: any, jobname: any, company: any, place: any, image: any, pincode: any) {
+    const body = { email, jobname, company, place, image, pincode }
     return this.http.post('http://localhost:3000/apply', body)
   }
 

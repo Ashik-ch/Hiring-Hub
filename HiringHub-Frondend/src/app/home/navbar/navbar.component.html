@@ -21,12 +21,12 @@
             <a href="jobs" class="nav-link">Jobs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="apply" *ngIf="type==='company'">Application</a>
+            <a class="nav-link" href="jobs/apply" *ngIf="type==='company'">Application</a>
             <a class="nav-link" href="jobs/myjobs/{{email}}" *ngIf="type==='employye'">MyJobs</a>
-            <!-- <a class="nav-link" href="jobs/myjobs/{{email}}" >MyJobs</a> -->
+   
           </li>
           <li class="nav-item">
-            <a href="joblist" *ngIf="type==='company'" class="nav-link">Jobslist</a>
+            <a href="jobs/joblist" *ngIf="type==='company'" class="nav-link">Jobslist</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="about">About</a>

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { JobsRoutingModule } from '../jobs-routing.module';
 import { JobsserviceService } from '../jobsservice.service';
 
 @Component({
@@ -10,11 +9,13 @@ import { JobsserviceService } from '../jobsservice.service';
 })
 export class JobviewComponent {
   elements: any
-
   parmsid: any
   email: any
   jobname: any
   company: any
+  place: any
+  image: any
+  pincode: any
 
   constructor(private service: JobsserviceService, private AR: ActivatedRoute, private rout: Router) { }
 
@@ -43,13 +44,13 @@ export class JobviewComponent {
 
 
   apply() {
-    this.service.apply(this.email, this.jobname, this.company)
-      .subscribe((result) => {
+    this.service.apply(this.email, this.jobname, this.company, this.place, this.image, this.pincode)
+      .subscribe((result: any) => {
         console.log("aplyres", result);
-        alert("Application submited Successfully")
+        alert(result.message)
         this.rout.navigateByUrl('jobs')
-        
-        
+
+
       }, (result) => {
         alert(result.error.message)
       })

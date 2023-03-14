@@ -10,10 +10,11 @@
       <div class="postcard__text t-dark">
         <h1 class="postcard__title blue"><a>{{t.jobname}}</a></h1>
         <div class="postcard__subtitle small">
-          <time datetime="2020-05-25 12:00:00">
+          <time datetime="2020-05-25 12:00:00"> 
             <i class="fas fa-calendar-alt mr-2"></i> {{t.time}}</time>
         </div>
         <div class="postcard__bar"></div>
+        <div class="postcard__preview-txt"> <b>Company:</b> {{t.company}}</div>
         <div class="postcard__preview-txt">Description: {{t.description}} Lorem ipsum dolor sit amet consectetur
           adipisicing elit. Eligendi, fugiat
           asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium
@@ -38,7 +39,7 @@
 
 
 
- <!-- <div class="card  " style="max-width: 900px;">
+<!-- <div class="card  " style="max-width: 900px;">
   <div class="row g-0" *ngFor="let t of elements">
     <div class="col-md-4 align-middle">
       <img src="{{t.imageToUrl}}" class="img-fluid rounded-start align-middle " />

@@ -28,8 +28,11 @@ export class JoblistComponent {
   image: any
   term: any;
   pincode: any
+  comname: any
 
+  selectedValue: any
   // datenew = new Date().getTime()
+  shows: boolean = false
 
 
 
@@ -58,6 +61,8 @@ export class JoblistComponent {
       .subscribe((result: any) => {
         this.elements = result.data
         console.log("Elements:", this.elements)
+        this.comname = this.elements.company
+        console.log("comname:", this.comname)
         // id genration
         let maxId = 0
         var item = this.elements.length
@@ -76,17 +81,16 @@ export class JoblistComponent {
         console.log("resultadjob", result)
         alert(result.message)
         location.reload()
-      }
-      )
-  }
-
-
-  jobcard() {
-    this.service.joblist()
-      .subscribe((result: any) => {
-        this.elements = result.data
       })
   }
+
+
+  // jobcard() {
+  //   this.service.joblist()
+  //     .subscribe((result: any) => {
+  //       this.elements = result.data
+  //     })
+  // }
 
 
   deletebtn(id: any) {
@@ -98,6 +102,10 @@ export class JoblistComponent {
         location.reload()
       })
   }
+  // other() {
+  //   console.log("show=true");
+  //   this.shows = true
+  // }
 
 }
 

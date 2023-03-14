@@ -53,9 +53,10 @@ export class RegisterComponent implements OnInit {
       this.service.register(name, age, mobile, email, password, gender, type, position, companyname, companytype)
         .subscribe((result: any) => {
           alert(result.message)
-          this.rout.navigateByUrl('login')
+          this.rout.navigateByUrl('')
         }, (result) => {
           alert(result.error.message)
+          this.rout.navigateByUrl('')
         })
     }
     else {

@@ -1,15 +1,14 @@
-<app-navbaruser></app-navbaruser>
+<app-navbar></app-navbar>
 
 
 <div class="mt-5 pt-4 ">
-  <input type="search" placeholder="Searchbar" class="form-control ps-2 " style="width: 247px; border-radius: 10px; ; height: 40px; margin-left: 135px; "
-    [(ngModel)]="term">
+  <input type="search" placeholder="Searchbar" class="form-control ps-2 "
+    style="width: 247px; border-radius: 10px; ; height: 40px; margin-left: 135px; " [(ngModel)]="term">
 </div>
-
 
 <div class="container row " style="margin-left: 100px;">
   <!-- Card Wider -->
-  <div class="card  card-cascade wider m-4" *ngFor="let t of elements  |filter:term" style="width: 300px;">
+  <div class="card  card-cascade wider m-4" *ngFor="let t of elements  | filter:term" style="width: 300px;">
     <!-- Card image -->
     <div routerLink="jobview/{{t.id}}">
       <div class="view view-cascade overlay">
@@ -19,6 +18,7 @@
       <div class="card__body">
         <span class="tag tag-blue">View</span>
         <h2>{{t.jobname}}</h2>
+        <p><u>{{t.company}} </u></p>
         <p>Details: {{t.description}}</p>
         <p class="">{{t.place}}-{{t.pincode}}</p>
       </div>

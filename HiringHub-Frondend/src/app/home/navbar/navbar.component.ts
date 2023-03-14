@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';     //for logout backpage avoid
 
 @Component({
-  selector: 'app-navbaruser',
+  selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
@@ -38,7 +38,7 @@ export class NavbarComponent implements OnInit {
 
 
   logout() {
-    this.rout.navigate(['/login']);
+    this.rout.navigate(['']);
 
     // Replace the current URL with the login page URL
     this.location.replaceState('/login');

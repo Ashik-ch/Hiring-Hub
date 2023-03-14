@@ -10,7 +10,7 @@ const cors = require('cors')
 
 // create server app using express
 const app = express()
- 
+
 const PORT = process.env.PORT || 3000;
 
 // const router = express.Router();
@@ -40,7 +40,7 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/jobs', (req, res) => {
-    service.addjob(req.body.jobname, req.body.description, req.body.place, req.body.time, req.body.company, req.body.number, req.body.id, req.body.pincode,  req.body.image)
+    service.addjob(req.body.jobname, req.body.description, req.body.place, req.body.time, req.body.company, req.body.number, req.body.id, req.body.pincode, req.body.image)
         .then(data => {
             res.status(data.statuscode).json(data)
         })
@@ -65,7 +65,7 @@ app.get('/jobview/:id', (req, res) => {
 
 // uodate
 app.put('/jobs/update/:id', (req, res) => {
-    service.updatejob(req.body.jobname, req.body.description, req.body.place, req.body.time, req.body.company, req.body.number, req.body.id, req.body.pincode,  req.body.image)
+    service.updatejob(req.body.jobname, req.body.description, req.body.place, req.body.time, req.body.company, req.body.number, req.body.id, req.body.pincode, req.body.image)
         .then(data => {
             res.status(data.statuscode).json(data)
         })
@@ -79,7 +79,7 @@ app.delete('/joblist/:id', (req, res) => {
             if (data) {
                 console.log("aa1", data)
                 res.status(data.statuscode).json(data)
-            } 
+            }
         })
 })
 
@@ -112,7 +112,7 @@ app.get('/apply', (req, res) => {
 
 // get applied details for user
 app.get('/myjobs/:email', (req, res) => {
-    service.applied(req.params.email)
+    service.myjobs(req.params.email)
         .then(data => {
             console.log("daa", data);
             res.status(data.statuscode).json(data)

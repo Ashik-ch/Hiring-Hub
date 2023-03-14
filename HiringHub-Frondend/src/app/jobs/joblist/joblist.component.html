@@ -21,20 +21,32 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
                     <div class="text-center text-success ">
                         <form action="">
-                            <div><input type="text" class="form-control" placeholder="jobname" [(ngModel)]="jobname"
+                            <div><input type="text" class="form-control" placeholder="Job Name" [(ngModel)]="jobname"
                                     name="jobname"> <br>
                                 <input type="text" class="form-control" placeholder="description"
                                     [(ngModel)]="description" name="description"><br>
-                                <input type="text" class="form-control" placeholder="place" [(ngModel)]="place"
+                                <input type="text" class="form-control" placeholder="Place" [(ngModel)]="place"
                                     name="place"> <br>
                                 <input type="text" class="form-control" placeholder="Pincode" [(ngModel)]="pincode"
                                     name="pincode"> <br>
 
+                                <!-- <select id="company" name="company" class="form-control" [(ngModel)]="company">
+                                    <option value="" disabled selected>Company</option>
+                                    <option *ngFor="let comp of elements" [value]="comp.company" name="company">
+                                        {{comp.company}}</option>
+                                    <option value="other" (click)="other()">Other</option>
+                                </select>
+                                <br>
+                                <input *ngIf="company == 'other'" type="text" class="form-control"
+                                    placeholder="company" name="company"  [value]="company"> -->
+
+
+
                                 <input type="text" class="form-control" placeholder="company" [(ngModel)]="company"
                                     name="company"> <br>
+
                                 <input type="text" class="form-control" placeholder="number" [(ngModel)]="number"
                                     name="number">
                                 <input type="file" class="form-control mt-3" placeholder="Image" [(ngModel)]="image"
@@ -54,15 +66,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
 
 
 
