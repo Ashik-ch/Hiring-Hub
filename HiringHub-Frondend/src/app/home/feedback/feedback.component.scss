@@ -28,13 +28,7 @@ body {
     text-align: center;
 }
 
-#container {
-    position: relative;
-    margin: auto;
-    overflow: hidden;
-    width: 700px;
-    height: 250px;
-}
+
 
 h1 {
     font-size: 0.9em;
@@ -55,13 +49,7 @@ h1 {
     letter-spacing: 5px;
 }
 
-p {
-    margin-top: -5px;
-    font-size: 0.5em;
-    font-weight: 100;
-    color: darken($dark, 10%);
-    letter-spacing: 1px;
-}
+
 
 button,
 .dot {
@@ -81,24 +69,8 @@ button,
 }
 
 
-.dot {
-    width: 8px;
-    height: 8px;
-    background: $white;
-    border-radius: 50%;
-    position: absolute;
-    top: 4%;
-    right: 6%;
 
-    &:hover {
-        background: darken($white, 20%);
-    }
-}
 
-.two {
-    right: 12%;
-    opacity: .5;
-}
 
 .face {
     position: absolute;
@@ -113,18 +85,7 @@ button,
     animation: bounce 1s ease-in infinite;
 }
 
-.face2 {
-    position: absolute;
-    width: 22%;
-    height: 22%;
-    background: $white;
-    border-radius: 50%;
-    border: 1px solid $dark;
-    top: 21%;
-    left: 37.5%;
-    z-index: 2;
-    animation: roll 3s ease-in-out infinite;
-}
+
 
 .eye {
     position: absolute;
@@ -183,26 +144,6 @@ button,
     text-align: center;
     height: 40%;
     top: 47%;
-}
-
-.button-box {
-    position: absolute;
-    background: #FCFCFC;
-    width: 43%;
-    height: 19%;
-    border-radius: 20px;
-    top: 74%;
-    left: 30%;
-    outline: 0;
-    border: none;
-    box-shadow: 2px 2px 10px rgb(119 119 119 / 50%);
-    transition: all 0.5s ease-in-out;
-
-    &:hover {
-        background: darken($white, 5%);
-        transform: scale(1.05);
-        transition: all .3s ease-in-out;
-    }
 }
 
 @keyframes bounce {
@@ -385,25 +326,6 @@ input {
     flex-direction: column;
 }
 
-.app-title {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    color: #ea1d6f;
-    font-size: 26px;
-}
-
-.app-title:after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    width: 25px;
-    height: 4px;
-    background: #ea1d6f;
-}
-
 
 .app-form-group {
     margin-bottom: 10px;
@@ -468,13 +390,6 @@ input {
 
 
 
-    .app-title span {
-        margin-right: 12px;
-    }
-
-    .app-title:after {
-        display: none;
-    }
 }
 
 @media screen and (max-width: 600px) {

@@ -9,6 +9,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+// import { JobsModule } from '../jobs/jobs.module';
 
 
 
@@ -21,19 +22,19 @@ import { ProfileComponent } from './profile/profile.component';
     AboutComponent,
     FeedbackComponent,
     ProfileComponent,
-   
+
   ],
   imports: [
     CommonModule,
-    
+
     HomeRoutingModule,
     FormsModule,
+    // JobsModule
 
-   
-    
 
- 
-  
+
+
+
   ],
   exports: [
     NavbarComponent,
