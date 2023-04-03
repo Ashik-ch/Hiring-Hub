@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+
 import { JobsserviceService } from '../jobsservice.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class JobcardComponent {
   term: any;
 
 
-  constructor(private service: JobsserviceService, private rout:Router ) {  }
+  constructor(private service: JobsserviceService ) {  }
   ngOnInit() {
     this.jobcard()
   }
@@ -20,15 +20,13 @@ export class JobcardComponent {
   jobcard() {
     this.service.joblist()
       .subscribe((result: any) => {
+        console.log("resss:",result)
         this.elements = result.data
         
       })
   }
 
-  view(){
-    this.rout.navigateByUrl( "jobview/:id")
-    alert("ok")
-  }
+  
 
   
 }

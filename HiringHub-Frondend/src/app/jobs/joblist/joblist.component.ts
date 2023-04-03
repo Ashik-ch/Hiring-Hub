@@ -48,10 +48,7 @@ export class JoblistComponent {
     const month = date.getMonth() + 1; // get the month (0-11) and add 1 to convert to (1-12)
     const year = date.getFullYear(); // get the year (4 digits)
     this.time = `${day}/${month}/${year}`; // create a formatted date string in the dd/mm/yyyy format
-    console.log(this.time); // output: "8/3/2023" (for example)
-
-
-
+    // console.log(this.time); // output: "8/3/2023" (for example)
   }
 
 
@@ -98,14 +95,11 @@ export class JoblistComponent {
       .subscribe((result) => {
         console.log("id", id);
         console.log("resuldet", result);
-        // this.elements.splice(id, 1)
+        this.elements.splice(id, 1)
         location.reload()
       })
   }
-  // other() {
-  //   console.log("show=true");
-  //   this.shows = true
-  // }
+
 
 }
 

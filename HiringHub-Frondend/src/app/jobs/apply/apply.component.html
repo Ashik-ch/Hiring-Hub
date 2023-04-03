@@ -6,6 +6,7 @@
             <th> Email</th>
             <th>Jobname</th>
             <th>Company</th>
+            <th>Status</th>
         </tr>
     </thead>
     <tbody>
@@ -16,13 +17,32 @@
                     <p class="">{{t.email}}</p>
                 </div>
             </td>
-            <ul *ngFor="let jobName of t.jobname">
+            <!-- <ul *ngFor="let jobName of t.jobname">
                 <li class="fw-normal" style="line-height: 1.2; padding:-12px"> {{jobName}}</li>
 
-            </ul>
+            </ul> -->
+            <td>
+                <span class=" rounded-pill ">{{t.jobname}}</span>
+            </td>
             <td>
                 <span class=" rounded-pill ">{{t.company}}</span>
             </td>
+            <td>
+                <span class=" rounded-pill">{{t.status}}</span>
+
+                <i class="fas fa-check ms-5" *ngIf="t.status == 'pending'" (click)="approvebtn(t)"> </i>
+                <i class="fas fa-times ms-5" *ngIf="t.status == 'pending'" (click)="rejectbtn(t)"> </i>
+
+
+
+                <!-- <button class="btn btn-light btn-rounded ms-4" *ngIf="t.status == 'pending'" (click)="approvebtn(t)">
+                    Approve </button> -->
+
+
+                <!-- <button class="btn btn-light btn-rounded ms-4" *ngIf="t.status == 'pending'"
+                    (click)="approvebtn(t)"> Approve </button> -->
+            </td>
+
 
         </tr>
     </tbody>

@@ -49,10 +49,38 @@ export class JobsserviceService {
 
 
 
-  apply(email: any, jobname: any, company: any, place: any, image: any, pincode: any) {
-    const body = { email, jobname, company, place, image, pincode }
+  apply(name: any, email: any, jobname: any, company: any, status: any) {
+    const body = { name, email, jobname, company, status }
     return this.http.post('http://localhost:3000/apply', body)
   }
+
+
+
+  approveapplies(email:any,jobname: any, company: any,status: any ) {
+    const body = {
+      email,
+      jobname: jobname,
+      company: company,
+      status
+    };
+    console.log("body", body)
+    return this.http.put('http://localhost:3000/apply', body);
+  }
+
+  // rejectapplies(job: any) {
+  //   const body = {
+  //     name: job.jobname,
+  //     status: 'reject'
+  //   };
+  //   console.log("body", body)
+  //   return this.http.put('http://localhost:3000/apply', body);
+  // }
+
+  // delete application
+  // reject(job: any) {
+  //   return this.http.delete('http://localhost:3000/apply/'+ job);
+  // }
+
 
   // admin list
   appliedlist() {

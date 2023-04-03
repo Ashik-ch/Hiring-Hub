@@ -16,6 +16,8 @@ export class JobviewComponent {
   place: any
   image: any
   pincode: any
+  name: any
+  status = "pending"
 
   constructor(private service: JobsserviceService, private AR: ActivatedRoute, private rout: Router) { }
 
@@ -23,6 +25,7 @@ export class JobviewComponent {
   ngOnInit() {
 
     this.email = JSON.parse(localStorage.getItem("email") || "")
+    this.name = JSON.parse(localStorage.getItem("name") || "")
 
     this.AR.params
       .subscribe((result) => {
@@ -44,13 +47,11 @@ export class JobviewComponent {
 
 
   apply() {
-    this.service.apply(this.email, this.jobname, this.company, this.place, this.image, this.pincode)
+    this.service.apply(this.name, this.email, this.jobname, this.company, this.status)
       .subscribe((result: any) => {
         console.log("aplyres", result);
         alert(result.message)
         this.rout.navigateByUrl('jobs')
-
-
       }, (result) => {
         alert(result.error.message)
       })

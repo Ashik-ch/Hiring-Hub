@@ -1,17 +1,13 @@
 // mongoDb connection
 
 //1 import moongose for connection
-// mongoose.set('strictQuery', true);
 const mongoose = require('mongoose')
-mongoose.set('strictQuery', true);
+mongoose.set('strictQuery', true);      // enable strict mode for query filtering. 
 
 // 2 define conncection String
 mongoose.connect('mongodb://127.0.0.1:27017/Jobs', {
-    useNewUrlParser: true
+    useNewUrlParser: true               //indicate to Mongoose that the MongoDB Node.js driver should use the new URL parser when connecting to MongoDB.
 })
-
-// const uri = ('mongodb://localhost:27017/BANKAPP',
-//     () => {  console.log("mongoDb Connected");   });
 
 //3 Create  a model to store data  with schema
 const User = mongoose.model('User', {
@@ -36,7 +32,7 @@ const Job = mongoose.model('Job', {
     number: Number,
     id: Number,
     pincode: Number,
-    image:String
+    image: String
 })
 
 const Feedback = mongoose.model('Feedback', {
@@ -49,20 +45,10 @@ const Feedback = mongoose.model('Feedback', {
 const Apply = mongoose.model('Apply', {
     name: String,
     email: String,
-    jobname: Array,
-    company: String
+    jobname: String,
+    company: String,
+    status: String
 })
-
-
-
-
-
-
-
-
-
-
-
 
 
 

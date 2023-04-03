@@ -4,7 +4,7 @@
 const db = require('./db')
 
 
-
+// adding jobs
 const addjob = (jobname, description, place, time, company, number, id, pincode, image) => {
     return db.Job.findOne({ jobname })
         .then(data => {
@@ -12,7 +12,7 @@ const addjob = (jobname, description, place, time, company, number, id, pincode,
                 return {
                     statuscode: 400,
                     status: false,
-                    message: "already exist"
+                    message: "Job already exist"
                 }
             }
             else {
@@ -27,7 +27,7 @@ const addjob = (jobname, description, place, time, company, number, id, pincode,
         })
 }
 
-
+// to get joblist
 const joblist = () => {
     return db.Job.find()
         .then(data => {
@@ -49,7 +49,7 @@ const joblist = () => {
 }
 
 
-
+//to get pertiular job card view
 const jobcardview = (id) => {
     return db.Job.find({ id })
         .then(data => {
@@ -64,7 +64,9 @@ const jobcardview = (id) => {
         })
 }
 
+// delete perticular job
 const deletejob = (id) => {
+
     return db.Job.deleteOne({ id })
         .then((result) => {
             console.log("result", result);
@@ -90,9 +92,10 @@ const deletejob = (id) => {
 
 
 
-
+// update
 const updatejob = (jobname, description, place, time, company, number, id, pincode, image) => {
     return db.Job.findOne({ jobname })
+        // return db.Job.updateOne({ jobname })
         .then(data => {
             if (data) {
                 const newJob = new db.Job({ jobname, description, place, time, company, number, id, pincode, image })
@@ -126,7 +129,6 @@ const feedback = (name, email, type, feedback) => {
             if (data) {
                 data.feedback.push(feedback)
                 data.save()
-                console.log(" data2", data);
                 return {
                     statuscode: 200,
                     status: true,
@@ -140,7 +142,7 @@ const feedback = (name, email, type, feedback) => {
                 return {
                     statuscode: 202,
                     status: true,
-                    message: "fedbkk successfully",
+                    message: "feedback successfully",
                     newFeedback
                 }
             }
@@ -150,67 +152,7 @@ const feedback = (name, email, type, feedback) => {
 
 
 
-// if (data) {
-//     data.feedback.push(feedback)
-//     data.save()
-//     console.log(" data2", data);
-//     return {
-//         statuscode: 200,
-//         status: true,
-//         message: "feedback  successfully",
-//         data
-//     }
-// }
-// else {
-//     const newFeedback = new db.Feedback({ name, email, type, feedback })
-//     newFeedback.save()   //saving into database
-//     return {
-//         statuscode: 202,
-//         status: true,
-//         message: "fedbkk successfully",
-//         newFeedback
-//     }
-// }
-
-
-// to apply job
-// const apply = (email, jobname, company) => {
-//     return db.Apply.findOne({ email, company })
-//         .then(data => {
-//             console.log("qq", data);
-//             if (data) {
-//                 data.jobname.push(jobname)
-//                 data.save()
-//                 console.log("saved", data);
-//                 return {
-//                     statuscode: 200,
-//                     status: true,
-//                     message: "pushed  successfully",
-//                     data
-//                 }
-//             }
-
-
-//             else {
-//                 const newApply = new db.Apply({ email, jobname, company })
-//                 newApply.save()
-//                 return {
-//                     statuscode: 200,
-//                     status: true,
-//                     message: " new apply",
-//                     newApply
-//                 }
-//             }
-
-//         })
-// }
-
-
-
-// -------------------------------
-
-
-const apply = (email, jobname, company, place, image, pincode ) => {
+const apply = (name, email, jobname, company, status) => {
     return db.Apply.findOne({ email, jobname, company })
         .then(data => {
             console.log("ED: ", data);
@@ -218,69 +160,41 @@ const apply = (email, jobname, company, place, image, pincode ) => {
                 return {
                     statuscode: 400,
                     status: false,
-                    message: "Job Already  Applied"
+                    message: "Job Already Applied"
                 }
             }
+            // else {
+            //     return db.Apply.findOne({ email, company })
+            //         .then(data => {
+
+            //             if (data) {
+            //                 data.jobname.push(jobname, place, image, pincode)
+            //                 data.save()
+            //                 console.log("saved", data);
+            //                 return {
+            //                     statuscode: 200,
+            //                     status: true,
+            //                     message: "Job Added",
+            //                     data
+            //                 }
+            //             }
             else {
-                return db.Apply.findOne({ email, company })
-                    .then(data => {
-
-                        if (data) {
-                            data.jobname.push(jobname, place, image, pincode)
-                            data.save()
-                            console.log("saved", data);
-                            return {
-                                statuscode: 200,
-                                status: true,
-                                message: "Job Added",
-                                data
-                            }
-                        }
-                        else {
-                            const newApply = new db.Apply({ email, jobname, company, place, image, pincode })
-                            newApply.save()
-                            return {
-                                statuscode: 200,
-                                status: true,
-                                message: " New Application Succesfull",
-                                newApply
-                            } 
-                        }
-
-                    })
+                const newApply = new db.Apply({ name, email, jobname, company, status })
+                newApply.save()
+                return {
+                    statuscode: 200,
+                    status: true,
+                    message: " New Application Succesfull",
+                    newApply
+                }
             }
 
-
-
-
-
-
-            // else if (data[email] != [company][jobname]) {
-            //     data.jobname.push(jobname)
-            //     data.save()
-
-            //     return {
-            //         statuscode: 202,
-            //         status: true,
-            //         message: "pushed successfully",
-            //         newApply
-            //     }
-            // }
-            // else if (data = ![company] && ![jobname]) {
-            //     const newApply = new db.Apply({ email, jobname, company })
-            //     newApply.save()
-            //     return {
-            //         statuscode: 200,
-            //         status: true,
-            //         message: " new apply",
-            //         newApply
-            //     }
-
-            // }
-
-
-        })
+        }
+        )
 }
+
+// })
+// }
 
 
 
@@ -288,7 +202,7 @@ const apply = (email, jobname, company, place, image, pincode ) => {
 const appliedlist = () => {
     return db.Apply.find()
         .then(data => {
-            console.log("ad", data);
+            // console.log("ad", data);
             if (data) {
                 return {
                     statuscode: 200,

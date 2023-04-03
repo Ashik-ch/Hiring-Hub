@@ -1,0 +1,47 @@
+EXPRESS
+
+package.json                --  npm init                                //installing
+nodemodule (express)        --  npm i express
+create index.js file        --  index.js
+package.json-> start:nodemon index.js -- npm i nodemon
+conncecting backend and frondend    --  npm i cors   --    
+
+index.js
+    import express              --      const express = require('express')                        //importing
+    backend and frondend conect  --     const cors = require('cors')
+
+    apps using exprsess         --      const app = express()                                   //instance
+    to parse JSON data from requests    --  app.use(express.json())                         //Configure middleware
+    apps using  cors            --      app.use(cors({    origin: '*' }))
+
+    ...........
+
+    
+    setup port for server  --   const PORT = process.env.PORT || 3000;
+                                app.listen(PORT, () => {   console.log(`Server running on port ${PORT}`)    })
+
+
+api  creation
+        app.post('/login', (req, res) => {
+             auth.login(req.body.email, req.body.password)
+            .then(data => {
+                res.status(data.statuscode).json(data)
+            })
+        })
+
+
+____________________________________________________
+
+DATABASE Creation
+
+
+intsall mongodb         --      npm i mongodb
+import                  --      const mongoose = require('mongoose')
+                                mongoose.set('strictQuery', true);     // enable strict mode for query filtering. 
+
+define conncection      --  mongoose.connect('mongodb://127.0.0.1:27017/Jobs')                                
+
+model Creation          --   const User = mongoose.model('User', {
+                                name: String,
+                                age: Number,
+                                mobile: Number,})
