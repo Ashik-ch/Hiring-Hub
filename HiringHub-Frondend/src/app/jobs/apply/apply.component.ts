@@ -8,28 +8,47 @@ import { JobsserviceService } from '../jobsservice.service';
 })
 export class ApplyComponent implements OnInit {
   elements: any
+  len: any
+  show: any
+
+
+  
+  childMessage: any;
+
   constructor(private servic: JobsserviceService) { }
   ngOnInit(): void {
     this.appliedlist()
+    this.show = true
   }
+
+
+
 
   appliedlist() {
     this.servic.appliedlist()
       .subscribe((result: any) => {
         this.elements = result.data
         console.log("list", this.elements);
-
+        console.log("length of array:", this.len = this.elements.length);
       })
   }
+
+
+
+  receiveMessage(event:any) {
+    this.childMessage = event;
+  }
+
 
   approvebtn(t: any) {
     const status = "Approved"
     console.log("tttt", t);
-    console.log("aa", t.jobname,t.company, status);
-    this.servic.approveapplies(t.email,t.jobname, t.company, status)
+    console.log("aa", t.jobname, t.company, status);
+    this.servic.approveapplies(t.email, t.jobname, t.company, status)
       .subscribe((result: any) => {
         this.elements = result
         console.log("list", this.elements);
+
         location.reload()
       })
   }
@@ -45,24 +64,24 @@ export class ApplyComponent implements OnInit {
   //     )
 
   rejectbtn(t: any) {
-      const status = "Rejected"
-      console.log("tttt", t);
-      console.log("aa", t.jobname,t.company, status);
-      this.servic.approveapplies(t.email,t.jobname, t.company, status)
-        .subscribe((result: any) => {
-          this.elements = result
-          console.log("list", this.elements);
-          location.reload()
-        })
-    
+    const status = "Rejected"
+    console.log("tttt", t);
+    console.log("aa", t.jobname, t.company, status);
+    this.servic.approveapplies(t.email, t.jobname, t.company, status)
+      .subscribe((result: any) => {
+        this.elements = result
+        console.log("list", this.elements);
+        location.reload()
+      })
+
 
     // this.servic.rejectapplies(t)
-      // .subscribe((result: any) => {
-        // this.elements = result
-        // console.log("list", this.elements);
-        // location.reload()
-      // }
-      // )
+    // .subscribe((result: any) => {
+    // this.elements = result
+    // console.log("list", this.elements);
+    // location.reload()
+    // }
+    // )
   }
 
 }

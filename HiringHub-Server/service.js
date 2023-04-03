@@ -70,7 +70,7 @@ const deletejob = (id) => {
     return db.Job.deleteOne({ id })
         .then((result) => {
             console.log("result", result);
-            if (result) {
+            if (result) { 
                 return {
                     result,
                     status: true,

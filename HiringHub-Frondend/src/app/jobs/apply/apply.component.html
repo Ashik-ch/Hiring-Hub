@@ -1,9 +1,17 @@
 <br>
 <br>
+<app-navbar [length]="len"   (messageEvent)="receiveMessage($event)" > </app-navbar>
+
+<br>
+<br>
+<h1 class="text-danger">{{ childMessage }}</h1>
+
 <table class="container table align-middle mb-0 tbl table-bordered mt-5 pt-5 shadow-lg">
     <thead class="bg-white text-dark mt-5">
         <tr>
-            <th> Email</th>
+         
+
+            <th>Email</th>
             <th>Jobname</th>
             <th>Company</th>
             <th>Status</th>

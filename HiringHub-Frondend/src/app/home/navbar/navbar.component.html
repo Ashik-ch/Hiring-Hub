@@ -1,11 +1,6 @@
-
-
 <header>
   <nav class="navbar nn navbar-expand-lg fixed-top navbar-scroll  navbar-dark d-none d-lg-block ">
     <div class="container-fluid">
-
-
-
       <a class="navbar-brand" href="home">Hiring Hub</a>
       <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,7 +18,7 @@
           <li class="nav-item">
             <a class="nav-link" href="jobs/apply" *ngIf="type==='company'">Application</a>
             <a class="nav-link" href="jobs/myjobs/{{email}}" *ngIf="type==='employye'">MyJobs</a>
-   
+
           </li>
           <li class="nav-item">
             <a href="jobs/joblist" *ngIf="type==='company'" class="nav-link">Jobslist</a>
@@ -37,14 +32,15 @@
         </ul>
       </div>
 
-
-
+      <i *ngIf="length > ''" class="fas fa-bell text-light mx-5" (click)="notify()"></i>
+      <button *ngIf="length > ''"  (click)="sendMessage()" >Message</button>
 
 
       <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="nav navbar-nav ms-auto">
           <div class="opcc">
             <li class="nav-item dropdown">
+
 
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> {{name}}</a>
 
@@ -55,16 +51,14 @@
                 <li><button class="dropdown-item" type="button" (click)="logout()">Logout</button></li>
 
               </ul>
-
             </li>
           </div>
         </ul>
       </div>
-
-
-
     </div>
   </nav>
-
-
 </header>
+
+<h1 *ngIf="notifies==true" style="margin: 20px;">
+  No of Application:{{length}}
+</h1>

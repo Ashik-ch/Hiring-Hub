@@ -47,21 +47,17 @@ export class JobsserviceService {
   }
 
 
-
-
+// job apply for user 
   apply(name: any, email: any, jobname: any, company: any, status: any) {
     const body = { name, email, jobname, company, status }
     return this.http.post('http://localhost:3000/apply', body)
   }
 
 
-
-  approveapplies(email:any,jobname: any, company: any,status: any ) {
+// approve update for admin
+  approveapplies(email: any, jobname: any, company: any, status: any) {
     const body = {
-      email,
-      jobname: jobname,
-      company: company,
-      status
+      email, jobname, company, status
     };
     console.log("body", body)
     return this.http.put('http://localhost:3000/apply', body);
@@ -87,7 +83,7 @@ export class JobsserviceService {
     return this.http.get('http://localhost:3000/apply')
   }
 
-  // userlist
+  // user applied list
   applied(email: any): Observable<any> {
     return this.http.get('http://localhost:3000/myjobs/' + email)
   }

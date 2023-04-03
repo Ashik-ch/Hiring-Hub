@@ -1,11 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-
-
 import { JobsserviceService } from '../jobsservice.service';
-
-
 
 
 @Component({
@@ -14,8 +9,8 @@ import { JobsserviceService } from '../jobsservice.service';
   styleUrls: ['./joblist.component.scss']
 })
 export class JoblistComponent {
-  show = 1
 
+  // show = 1
   jobname: any
   description: any
   place: any
@@ -30,15 +25,9 @@ export class JoblistComponent {
   pincode: any
   comname: any
 
-  selectedValue: any
-  // datenew = new Date().getTime()
-  shows: boolean = false
-
-
 
   constructor(private service: JobsserviceService, private http: HttpClient) { }
 
-  collect: any = []
 
   ngOnInit(): void {
     this.joblist()

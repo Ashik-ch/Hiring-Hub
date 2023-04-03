@@ -1,6 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component,  ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { JobsserviceService } from 'src/app/jobs/jobsservice.service';
+
 import { HomserviceService } from '../homservice.service';
 
 @Component({
@@ -15,9 +15,12 @@ export class FeedbackComponent {
   email: any
   type: any
   popup: any
-  
+
   // reseting cancel in feedback
   @ViewChild('myForm', { static: false }) myForm!: NgForm;
+
+
+
 
   constructor(private servc: HomserviceService) { }
   ngOnInit() {

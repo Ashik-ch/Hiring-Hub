@@ -3,23 +3,24 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthserviceService } from '../authservice.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
 
   type: any
   companyname: any
   res: any
-
+  name: any;
+  
   loginform = this.fb.group({            //form grp
     email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]],
     password: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]],
   })
-  name: any;
+ 
 
   constructor(private service: AuthserviceService, private rout: Router, private fb: FormBuilder) { }
 
@@ -62,8 +63,4 @@ export class LoginComponent implements OnInit {
 
     }
   }
-
-
-
-
 }
