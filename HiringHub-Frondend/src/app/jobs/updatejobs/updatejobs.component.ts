@@ -42,6 +42,7 @@ export class UpdatejobsComponent {
       })
     this.serv.updatecard(this.paramsid)
       .subscribe((result) => {
+        console.log("ressult", result);
         this.body = result.data[0]
         this.bodyname = this.body.jobname
         console.log("ParamsBody", this.body);
@@ -52,14 +53,13 @@ export class UpdatejobsComponent {
 
 
   updatejob(form: any) {
-    this.serv.updatejob(form.value.id,form.value.jobname, form.value.description, form.value.place, form.value.time,
-      form.value.company, form.value.number, form.value.pincode, form.value.image)
+    this.serv.updatejob(this.paramsid, form.value.jobname, form.value.company, form.value.description,
+      form.value.place, form.value.pincode, form.value.number, form.value.time, form.value.image)
       .subscribe((result: any) => {
         console.log("resultadjob", result)
         alert(result.message)
-        // location.reload()
+        location.reload()
 
-        alert("updated")
       })
     console.log("resultsjob", this.updatejob)
 

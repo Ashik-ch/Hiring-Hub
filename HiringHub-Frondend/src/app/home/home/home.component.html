@@ -83,7 +83,7 @@
                                     <div></div>
                                     <div></div>
                                 </div>
-                                <a class="hex-content" href="jobs/apply" *ngIf="type==='company'">
+                                <a class="hex-content" href="jobs/apply" *ngIf="type==='company' && type !=='employye'">
                                     <span class="hex-content-inner">
                                         <span class="icon">
                                             <i class="fa fa-braille"></i>
@@ -98,12 +98,26 @@
                                     </svg>
                                 </a>
 
-                                <a class="hex-content" h href="jobs/myjobs/{{email}}" *ngIf="type==='employye'">
+                                <a class="hex-content" href="jobs/myjobs/{{email}}" *ngIf="type==='employye'">
                                     <span class="hex-content-inner">
                                         <span class="icon">
                                             <i class="fa fa-braille"></i>
                                         </span>
                                         <span class="hextitle">My Jobs</span>
+                                    </span>
+                                    <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                                            fill="#1e2530"></path>
+                                    </svg>
+                                </a>
+                                <a class="hex-content" href="admin" *ngIf="type==='admin'">
+                                    <span class="hex-content-inner">
+                                        <span class="icon">
+                                            <i class="fa fa-clipboard"></i>
+                                        </span>
+                                        <span class="hextitle">Approve</span>
                                     </span>
                                     <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -153,6 +167,7 @@
                                             fill="#1e2530"></path>
                                     </svg>
                                 </a>
+
                             </div>
                             <div class="hexagon-item">
                                 <div class="hex-item">
@@ -238,7 +253,7 @@
 
                 </div>
             </div>
-            
+
 
         </div>
     </div>

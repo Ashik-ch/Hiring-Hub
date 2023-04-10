@@ -5,7 +5,7 @@ const db = require('./db')
 
 
 // adding jobs
-const addjob = (jobname, description, place, time, company, number, id, pincode, image) => {
+const addjob = (jobname, description, place, time, company, number, id, pincode, image, status) => {
     return db.Job.findOne({ jobname })
         .then(data => {
             if (data) {
@@ -16,7 +16,7 @@ const addjob = (jobname, description, place, time, company, number, id, pincode,
                 }
             }
             else {
-                const newJob = new db.Job({ jobname, description, place, time, company, number, id, pincode, image })
+                const newJob = new db.Job({ jobname, description, place, time, company, number, id, pincode, image, status })
                 newJob.save()
                 return {
                     statuscode: 200,
@@ -66,11 +66,10 @@ const jobcardview = (id) => {
 
 // delete perticular job
 const deletejob = (id) => {
-
     return db.Job.deleteOne({ id })
         .then((result) => {
             console.log("result", result);
-            if (result) { 
+            if (result) {
                 return {
                     result,
                     status: true,
@@ -93,17 +92,17 @@ const deletejob = (id) => {
 
 
 // update
-const updatejob = (jobname, description, place, time, company, number, id, pincode, image) => {
-    return db.Job.findOne({ jobname })
-        // return db.Job.updateOne({ jobname })
+const updatejob = (id, jobname, company, description, place, pincode, number, time, image) => {
+    return db.Job.findOneAndUpdate({ id }, { jobname, company, description, place, pincode, number, time, image })
         .then(data => {
             if (data) {
-                const newJob = new db.Job({ jobname, description, place, time, company, number, id, pincode, image })
-                newJob.save()
+                // const newJob = new db.Job({ id, jobname, company, description, place, pincode, number, time, image })
+                // newJob.save()
                 return {
                     statuscode: 200,
                     status: true,
-                    message: "Job Add successfully",
+                    message: "Updated successfully",
+                    data
                 }
             }
             else return {
@@ -111,9 +110,11 @@ const updatejob = (jobname, description, place, time, company, number, id, pinco
                 status: false,
                 message: "not exist"
             }
-
         })
 }
+
+
+
 
 
 
@@ -152,96 +153,96 @@ const feedback = (name, email, type, feedback) => {
 
 
 
-const apply = (name, email, jobname, company, status) => {
-    return db.Apply.findOne({ email, jobname, company })
-        .then(data => {
-            console.log("ED: ", data);
-            if (data) {
-                return {
-                    statuscode: 400,
-                    status: false,
-                    message: "Job Already Applied"
-                }
-            }
-            // else {
-            //     return db.Apply.findOne({ email, company })
-            //         .then(data => {
+// const apply = (name, email, jobname, company, status) => {
+//     return db.Apply.findOne({ email, jobname, company })
+//         .then(data => {
+//             console.log("ED: ", data);
+//             if (data) {
+//                 return {
+//                     statuscode: 400,
+//                     status: false,
+//                     message: "Job Already Applied"
+//                 }
+//             }
+//             // else {
+//             //     return db.Apply.findOne({ email, company })
+//             //         .then(data => {
 
-            //             if (data) {
-            //                 data.jobname.push(jobname, place, image, pincode)
-            //                 data.save()
-            //                 console.log("saved", data);
-            //                 return {
-            //                     statuscode: 200,
-            //                     status: true,
-            //                     message: "Job Added",
-            //                     data
-            //                 }
-            //             }
-            else {
-                const newApply = new db.Apply({ name, email, jobname, company, status })
-                newApply.save()
-                return {
-                    statuscode: 200,
-                    status: true,
-                    message: " New Application Succesfull",
-                    newApply
-                }
-            }
+//             //             if (data) {
+//             //                 data.jobname.push(jobname, place, image, pincode)
+//             //                 data.save()
+//             //                 console.log("saved", data);
+//             //                 return {
+//             //                     statuscode: 200,
+//             //                     status: true,
+//             //                     message: "Job Added",
+//             //                     data
+//             //                 }
+//             //             }
+//             else {
+//                 const newApply = new db.Apply({ name, email, jobname, company, status })
+//                 newApply.save()
+//                 return {
+//                     statuscode: 200,
+//                     status: true,
+//                     message: " New Application Succesfull",
+//                     newApply
+//                 }
+//             }
 
-        }
-        )
-}
-
-// })
+//         }
+//         )
 // }
 
 
 
+
+
 // to get applied list to admin
-const appliedlist = () => {
-    return db.Apply.find()
-        .then(data => {
-            // console.log("ad", data);
-            if (data) {
-                return {
-                    statuscode: 200,
-                    status: true,
-                    message: "Apllied job show successful",
-                    data: data
-                }
-            } else {
-                return {
-                    statuscode: 400,
-                    status: false,
-                    message: "not show"
-                }
-            }
-        })
-}
+// const appliedlist = () => {
+//     return db.Apply.find()
+//         .then(data => {
+//             // console.log("ad", data);
+//             if (data) {
+//                 return {
+//                     statuscode: 200,
+//                     status: true,
+//                     message: "Apllied job show successful",
+//                     data: data
+//                 }
+//             } else {
+//                 return {
+//                     statuscode: 400,
+//                     status: false,
+//                     message: "not show"
+//                 }
+//             }
+//         })
+// }
 
 // to get  applied list to params
-const myjobs = (email) => {
-    return db.Apply.find({ email })
-        .then((data) => {
-            if (data) {
-                console.log("da", data);
-                return {
-                    statuscode: 200,
-                    status: true,
-                    message: " showlist ",
-                    data
-                }
-            }
-            else {
-                return {
-                    statuscode: 400,
-                    status: false,
-                    message: "not show"
-                }
-            }
-        })
-}
+// const myjobs = (email) => {
+//     return db.Apply.find({ email })
+//         .then((data) => {
+//             if (data) {
+//                 console.log("da", data);
+//                 return {
+//                     statuscode: 200,
+//                     status: true,
+//                     message: " showlist ",
+//                     data
+//                 }
+//             }
+//             else {
+//                 return {
+//                     statuscode: 400,
+//                     status: false,
+//                     message: "not show"
+//                 }
+//             }
+//         })
+// }
+
 
 const profile = (email) => {
     return db.User.findOne({ email })
@@ -269,4 +270,4 @@ const profile = (email) => {
 
 
 //export
-module.exports = { addjob, joblist, jobcardview, deletejob, feedback, apply, appliedlist, myjobs, profile, updatejob }
+module.exports = { addjob, joblist, jobcardview, deletejob, feedback,  profile, updatejob }

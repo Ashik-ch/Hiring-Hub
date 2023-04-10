@@ -32,7 +32,12 @@ const Job = mongoose.model('Job', {
     number: Number,
     id: Number,
     pincode: Number,
-    image: String
+    image: String,
+    status: {
+        type: String,
+        enum: ['Pending', 'Verified', 'Rejected'],
+        default: 'Pending'
+    }
 })
 
 const Feedback = mongoose.model('Feedback', {

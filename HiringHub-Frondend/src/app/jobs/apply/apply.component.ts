@@ -10,15 +10,17 @@ export class ApplyComponent implements OnInit {
   elements: any
   len: any
   show: any
+  company: any
+  newelem: any
 
-
-  
   childMessage: any;
 
   constructor(private servic: JobsserviceService) { }
   ngOnInit(): void {
     this.appliedlist()
     this.show = true
+
+    this.company = JSON.parse(localStorage.getItem("companyname") || "")
   }
 
 
@@ -28,6 +30,20 @@ export class ApplyComponent implements OnInit {
     this.servic.appliedlist()
       .subscribe((result: any) => {
         this.elements = result.data
+        console.log("Elements:", this.elements)
+
+        this.newelem = this.elements.filter((item: any) => {
+          console.log("IT", item);
+
+          const check = item.company === this.company;
+          console.log("check", check);
+
+          return check;
+        });
+        console.log("this.newelem", this.newelem)
+        this.elements = this.newelem
+
+
         console.log("list", this.elements);
         console.log("length of array:", this.len = this.elements.length);
       })
@@ -35,7 +51,7 @@ export class ApplyComponent implements OnInit {
 
 
 
-  receiveMessage(event:any) {
+  receiveMessage(event: any) {
     this.childMessage = event;
   }
 

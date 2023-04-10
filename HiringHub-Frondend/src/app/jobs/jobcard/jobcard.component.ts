@@ -8,25 +8,27 @@ import { JobsserviceService } from '../jobsservice.service';
   styleUrls: ['./jobcard.component.scss']
 })
 export class JobcardComponent {
+  
   elements: any
   term: any;
+  array: any
 
-
-  constructor(private service: JobsserviceService ) {  }
+  constructor(private service: JobsserviceService) { }
   ngOnInit() {
     this.jobcard()
+    
   }
+
+
 
   jobcard() {
     this.service.joblist()
-      .subscribe((result: any) => {
-        console.log("resss:",result)
-        this.elements = result.data
-        
+      .subscribe((result) => {
+        this.array = result
+        this.elements = this.array.data;
+        this.elements = this.elements.filter((item: any) => item.status === 'Verified');
+        console.log("hjfa", this.elements)
       })
   }
 
-  
-
-  
 }

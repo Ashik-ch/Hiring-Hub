@@ -7,6 +7,7 @@ import { HomeComponent } from '../home/home/home.component';
 // import { FooterComponent } from './footer/footer.component';
 import { HomeModule } from '../home/home.module';
 import { FormsModule } from '@angular/forms';
+import { AdminComponent } from './admin/admin.component';
 
 // import { HomeModule } from '../home/home.module';
 
@@ -17,6 +18,8 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
 
+
+    AdminComponent
   ],
 
   imports: [
@@ -24,11 +27,11 @@ import { FormsModule } from '@angular/forms';
     HomeModule,
     AdminRoutingModule,
     FormsModule
-    
+
   ],
   exports: [
     AdminRoutingModule,
-  
+    AdminComponent
 
   ]
 })

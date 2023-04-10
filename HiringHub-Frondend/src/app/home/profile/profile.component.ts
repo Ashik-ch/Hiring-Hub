@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HomserviceService } from '../homservice.service';
@@ -13,7 +13,7 @@ export class ProfileComponent {
 
   email: any
   elements: any
-  constructor(private http: HttpClient, private servic: HomserviceService, private AR: ActivatedRoute) { }
+  constructor( private servic: HomserviceService, private AR: ActivatedRoute) { }
 
   ngOnInit() {
 

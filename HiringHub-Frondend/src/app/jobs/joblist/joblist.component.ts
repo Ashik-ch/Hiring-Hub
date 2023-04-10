@@ -23,8 +23,8 @@ export class JoblistComponent {
   image: any
   term: any;
   pincode: any
-  comname: any
 
+  newelem: any
 
   constructor(private service: JobsserviceService, private http: HttpClient) { }
 
@@ -38,6 +38,9 @@ export class JoblistComponent {
     const year = date.getFullYear(); // get the year (4 digits)
     this.time = `${day}/${month}/${year}`; // create a formatted date string in the dd/mm/yyyy format
     // console.log(this.time); // output: "8/3/2023" (for example)
+
+
+    this.company = JSON.parse(localStorage.getItem("companyname") || "")
   }
 
 
@@ -47,8 +50,14 @@ export class JoblistComponent {
       .subscribe((result: any) => {
         this.elements = result.data
         console.log("Elements:", this.elements)
-        this.comname = this.elements.company
-        console.log("comname:", this.comname)
+        this.newelem = this.elements.filter((item: any) => {
+          const check = item.company === this.company;
+          return check;
+        });
+        console.log("this.newelem", this.newelem)
+        this.elements = this.newelem
+
+
         // id genration
         let maxId = 0
         var item = this.elements.length

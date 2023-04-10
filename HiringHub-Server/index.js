@@ -9,6 +9,7 @@ const express = require('express')
 // importing dataservice
 const auth = require('./authentcation')
 const service = require('./service')
+const applyserv = require('./applies')
 const db = require("./db")
 
 
@@ -45,7 +46,7 @@ app.post('/login', (req, res) => {
 
 // adding jobs
 app.post('/jobs', (req, res) => {
-    service.addjob(req.body.jobname, req.body.description, req.body.place, req.body.time, req.body.company, req.body.number, req.body.id, req.body.pincode, req.body.image)
+    service.addjob(req.body.jobname, req.body.description, req.body.place, req.body.time, req.body.company, req.body.number, req.body.id, req.body.pincode, req.body.image, req.body.status)
         .then(data => {
             res.status(data.statuscode).json(data)
         })
@@ -55,6 +56,7 @@ app.post('/jobs', (req, res) => {
 app.get('/jobs', (req, res) => {
     service.joblist()
         .then(data => {
+            console.log("DATA", data);
             res.status(data.statuscode).json(data)
         })
 })
@@ -71,8 +73,9 @@ app.get('/jobview/:id', (req, res) => {
 
 // update
 app.put('/jobs/update/:id', (req, res) => {
-    service.updatejob(req.body.jobname, req.body.description, req.body.place, req.body.time, req.body.company, req.body.number, req.body.id, req.body.pincode, req.body.image)
+    service.updatejob(req.params.id, req.body.jobname, req.body.company, req.body.description, req.body.place, req.body.pincode, req.body.number, req.body.time, req.body.image)
         .then(data => {
+            console.log("updateRes", data);
             res.status(data.statuscode).json(data)
         })
 })
@@ -88,6 +91,39 @@ app.delete('/joblist/:id', (req, res) => {
         )
 })
 
+//Job approval
+app.put('/verifyjob', async (req, res) => {
+    try {
+        const item = req.body;
+        console.log("item", item);
+        db.Job.updateOne(
+            { jobname: item.jobname },
+            { status: item.status })
+            .then((document) => {
+                console.log("Doc", document);
+                res.json(document);
+            });
+    } catch (err) {
+        next(err);
+    }
+})
+
+
+app.delete('/job/:name', (req, res) => {
+    const jobname = req.params.name;
+    db.Job.deleteOne({ jobname })
+        .then((result) => {
+            console.log("res:", result);
+            res.status(200).json(result);
+        })
+        .catch((error) => {
+            res.status(500).json({ error: error });
+        });
+})
+
+
+
+
 
 // feedback send
 app.post('/feedback', (req, res) => {
@@ -97,13 +133,17 @@ app.post('/feedback', (req, res) => {
         })
 })
 
+
+
+
 // apply job  user
 app.post('/apply', (req, res) => {
-    service.apply(req.body.name, req.body.email, req.body.jobname, req.body.company, req.body.status)
+    applyserv.apply(req.body.name, req.body.email, req.body.jobname, req.body.company, req.body.status)
         .then(data => {
             res.json(data)
         })
 })
+
 
 // approvel by admin
 app.put('/apply', async (req, res) => {
@@ -137,11 +177,9 @@ app.delete('/apply/:name', (req, res) => {
 
 
 
-
-
 // get applied details admin
 app.get('/apply', (req, res) => {
-    service.appliedlist()
+    applyserv.appliedlist()
         .then(data => {
             res.status(data.statuscode).json(data)
         })
@@ -150,7 +188,7 @@ app.get('/apply', (req, res) => {
 
 // get applied details for user
 app.get('/myjobs/:email', (req, res) => {
-    service.myjobs(req.params.email)
+    applyserv.myjobs(req.params.email)
         .then(data => {
             console.log("daa", data);
             res.status(data.statuscode).json(data)

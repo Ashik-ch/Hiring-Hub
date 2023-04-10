@@ -14,19 +14,14 @@
 
     <ng-container *ngFor="let item of elements">
       <tr *ngIf="item.status !== 'Rejected'">
-        <!-- <ul> -->
-        <!-- <li *ngFor="let jobName of item.jobname">{{ jobName }}</li> -->
         <td>{{ item.jobname }}</td>
-        <!-- </ul> -->
-
         <td>{{ item.company }}</td>
-        <td>{{ item.status }}</td>
-        <td class="remarks" *ngIf=" item.status=='Approved'">Congratulations, you have been shortlisted! Check your
-          email
-          regularly for further updates.</td>
-        <td class="remarks" *ngIf=" item.status=='pending'"> It is currently under review. We will provide updates as
-          soon as your
-          application is approved."</td>
+        <td *ngIf=" item.status=='Approved'" class="text-success">{{ item.status }}</td>
+        <td *ngIf=" item.status=='pending'" class="text-secondary">{{ item.status }}</td>
+        <td class="remarks " *ngIf=" item.status=='Approved'">Congratulations,
+          you have been shortlisted! Check your email regularly for further updates.</td>
+        <td class="remarks " *ngIf=" item.status=='pending'">
+          It is currently under review. We will provide updates as soon as your application is approved."</td>
       </tr>
     </ng-container>
 </table>
@@ -48,14 +43,10 @@
 
       <ng-container *ngFor="let item of elements">
         <tr *ngIf="item.status == 'Rejected'">
-          <!-- <ul> -->
-          <!-- <li *ngFor="let jobName of item.jobname">{{ jobName }}</li> -->
           <td>{{ item.jobname }}</td>
-          <!-- </ul> -->
           <td>{{ item.company }}</td>
-          <td>{{ item.status }}</td>
+          <td class="text-danger">{{ item.status }}</td>
           <td class="remarks">Your Application is Rejected</td>
         </tr>
       </ng-container>
   </table>
-  <!-- </div> -->

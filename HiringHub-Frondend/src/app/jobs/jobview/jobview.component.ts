@@ -18,6 +18,7 @@ export class JobviewComponent {
   pincode: any
   name: any
   status = "pending"
+  type: any
 
   constructor(private service: JobsserviceService, private AR: ActivatedRoute, private rout: Router) { }
 
@@ -26,6 +27,7 @@ export class JobviewComponent {
 
     this.email = JSON.parse(localStorage.getItem("email") || "")
     this.name = JSON.parse(localStorage.getItem("name") || "")
+    this.type = JSON.parse(localStorage.getItem("type") || "")
 
     this.AR.params
       .subscribe((result) => {
