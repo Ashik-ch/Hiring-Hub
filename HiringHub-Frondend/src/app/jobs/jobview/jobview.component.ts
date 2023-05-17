@@ -17,7 +17,7 @@ export class JobviewComponent {
   image: any
   pincode: any
   name: any
-  status = "pending"
+  status = "Applied"
   type: any
 
   constructor(private service: JobsserviceService, private AR: ActivatedRoute, private rout: Router) { }
@@ -31,7 +31,8 @@ export class JobviewComponent {
 
     this.AR.params
       .subscribe((result) => {
-        this.parmsid = result['jobname']
+        this.parmsid = result
+        this.parmsid = this.parmsid.jobname
         console.log("params", this.parmsid);
       })
 

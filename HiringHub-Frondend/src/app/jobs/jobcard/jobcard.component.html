@@ -10,7 +10,7 @@
   <!-- Card Wider -->
   <div class="card  card-cascade wider m-4" *ngFor="let t of elements  | filter:term" style="width: 300px;">
     <!-- Card image -->
-    <div routerLink="jobview/{{t.id}}">
+    <div routerLink="jobview/{{t.uniqueNumber}}">
       <div class="view view-cascade overlay">
         <img class="card-img-top" src="{{t.image}}" style="height: 250px; width: 300px;" alt="Card image cap">
       </div>

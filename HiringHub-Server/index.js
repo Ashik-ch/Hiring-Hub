@@ -56,24 +56,24 @@ app.post('/jobs', (req, res) => {
 app.get('/jobs', (req, res) => {
     service.joblist()
         .then(data => {
-            console.log("DATA", data);
+            // console.log("DATA", data);
             res.status(data.statuscode).json(data)
         })
 })
 
 //to get pertiular job card view
-app.get('/jobview/:id', (req, res) => {
-    service.jobcardview(req.params.id)
+app.get('/jobview/:uniqueNumber', (req, res) => {   
+       service.jobcardview(req.params.uniqueNumber)
         .then(data => {
-            console.log("view", data);
-            res.status(data.statuscode).json(data)
+                    res.status(data.statuscode).json(data)
         })
 })
 
 
 // update
-app.put('/jobs/update/:id', (req, res) => {
-    service.updatejob(req.params.id, req.body.jobname, req.body.company, req.body.description, req.body.place, req.body.pincode, req.body.number, req.body.time, req.body.image)
+app.put('/jobs/update/:uniqueNumber', (req, res) => {
+    console.log("req.params.uniqueNumber",req.params.uniqueNumber,req.body);
+    service.updatejob(req.params.uniqueNumber, req.body.jobname, req.body.company, req.body.description, req.body.place, req.body.pincode, req.body.number, req.body.time, req.body.image)
         .then(data => {
             console.log("updateRes", data);
             res.status(data.statuscode).json(data)

@@ -29,25 +29,29 @@ export class JobsserviceService {
   }
 
   // viewingcard job
-  viewcard(jobname: any): Observable<any> {
-    return this.http.get('http://localhost:3000/jobview/' + jobname)
+  viewcard(uniqueNumber: any): Observable<any> {
+    console.log("rrr", uniqueNumber);
+    // let a=JSON.stringify(uniqueNumber);
+    return this.http.get('http://localhost:3000/jobview/' + uniqueNumber)
   }
 
   // updatecard getting
-  updatecard(id: any): Observable<any> {
-    return this.http.get('http://localhost:3000/jobview/' + id)
+  updatecard(uniqueNumber: any): Observable<any> {
+    console.log("iddd", uniqueNumber);
+
+    return this.http.get('http://localhost:3000/jobview/' + uniqueNumber)
   }
 
 
 
   // update
-  updatejob(id: any, jobname: any, company: any, description: any, place: any, pincode: any, number: any,
+  updatejob(uniqueNumber: any, jobname: any, company: any, description: any, place: any, pincode: any, number: any,
     time: any, image: any,) {
     const body = {
-      id, jobname, company, description, place, pincode, number, time, image
+      uniqueNumber, jobname, company, description, place, pincode, number, time, image
     }
     console.log("body", body);
-    return this.http.put('http://localhost:3000/jobs/update/' + id, body)
+    return this.http.put('http://localhost:3000/jobs/update/' + uniqueNumber, body)
   }
 
 

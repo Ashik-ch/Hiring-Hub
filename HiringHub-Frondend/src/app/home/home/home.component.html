@@ -83,7 +83,7 @@
                                     <div></div>
                                     <div></div>
                                 </div>
-                                <a class="hex-content" href="jobs/apply" *ngIf="type==='company' && type !=='employye'">
+                                <a class="hex-content" href="jobs/apply" *ngIf="type==='company'">
                                     <span class="hex-content-inner">
                                         <span class="icon">
                                             <i class="fa fa-braille"></i>
@@ -103,7 +103,7 @@
                                         <span class="icon">
                                             <i class="fa fa-braille"></i>
                                         </span>
-                                        <span class="hextitle">My Jobs</span>
+                                        <span class="hextitle">My Application</span>
                                     </span>
                                     <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -126,6 +126,9 @@
                                             fill="#1e2530"></path>
                                     </svg>
                                 </a>
+
+
+
                             </div>
 
                             <div class="hexagon-item">
@@ -139,21 +142,9 @@
                                     <div></div>
                                     <div></div>
                                 </div>
-                                <a class="hex-content" href="jobs/joblist" *ngIf="type==='company'">
-                                    <span class="hex-content-inner">
-                                        <span class="icon">
-                                            <i class="fa fa-clipboard"></i>
-                                        </span>
-                                        <span class="hextitle">Joblist</span>
-                                    </span>
-                                    <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
-                                            fill="#1e2530"></path>
-                                    </svg>
-                                </a>
-                                <a class="hex-content" href="feedback" *ngIf="type==='employye'">
+
+
+                                <a class="hex-content" href="feedback" *ngIf="type==='admin'  || type==='employye'">
                                     <span class="hex-content-inner">
                                         <span class="icon">
                                             <i class="fa fa-clipboard"></i>
@@ -167,6 +158,24 @@
                                             fill="#1e2530"></path>
                                     </svg>
                                 </a>
+
+                                <a class="hex-content" href="jobs/joblist" *ngIf=" type==='company'">
+                                    <span class="hex-content-inner">
+                                        <span class="icon">
+                                            <i class="fa fa-clipboard"></i>
+                                        </span>
+                                        <span class="hextitle">Job List</span>
+                                    </span>
+                                    <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                                            fill="#1e2530"></path>
+                                    </svg>
+                                </a>
+
+
+
 
                             </div>
                             <div class="hexagon-item">
@@ -206,7 +215,7 @@
                                     <div></div>
                                     <div></div>
                                 </div>
-                                <a class="hex-content">
+                                <a class="hex-content" href="contact">
                                     <span class="hex-content-inner">
                                         <span class="icon">
                                             <i class="fa fa-map-signs"></i>

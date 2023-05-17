@@ -1,0 +1,18 @@
+<div class="contact">
+    <h1>Contact Us </h1>
+    <h3>How can we help you?</h3>
+    <h5>Thank you for showing your interest in collaborating and interacting with us. Our hardworking and dedicated team
+        is ready to help you in every possible way. </h5>
+
+    <button (click)="btn()"> Get in touch</button>
+</div>
+
+
+
+<form [hidden]="!show">
+    <input type="text" name="name" placeholder="Your Name">
+    <input type="email" name="email" placeholder="Your Email">
+    <input type="text" name="subject" placeholder="Subject">
+    <textarea name="message" placeholder="Your Message"></textarea>
+    <button type="submit">Send</button>
+  </form>

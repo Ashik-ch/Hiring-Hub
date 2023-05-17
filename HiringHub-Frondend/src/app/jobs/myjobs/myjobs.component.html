@@ -17,7 +17,7 @@
         <td>{{ item.jobname }}</td>
         <td>{{ item.company }}</td>
         <td *ngIf=" item.status=='Approved'" class="text-success">{{ item.status }}</td>
-        <td *ngIf=" item.status=='pending'" class="text-secondary">{{ item.status }}</td>
+        <td *ngIf=" item.status=='Applied'" class="text-secondary">{{ item.status }}</td>
         <td class="remarks " *ngIf=" item.status=='Approved'">Congratulations,
           you have been shortlisted! Check your email regularly for further updates.</td>
         <td class="remarks " *ngIf=" item.status=='pending'">

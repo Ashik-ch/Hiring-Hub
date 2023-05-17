@@ -25,13 +25,11 @@
                     <input type="date" class="form-control" placeholder="Date" [(ngModel)]="body.time" name="time">
                     <br>
 
-                    <input type="file" class="form-control mt-3" placeholder="Image" [(ngModel)]="body.image"
+                    <input type="text" class="form-control mt-3" placeholder="Image" [(ngModel)]="body.image"
                         name="image">
                 </div>
                 <div class="modal-footer">
-
-
-                    <button type="button" class="btn btn-dark" (click)="updatejob(updatejobform)">Update</button>
+                    <button type="button" class="btn btn-dark mt-3" (click)="updatejob(updatejobform)">Update</button>
                 </div>
 
             </form>

@@ -20,7 +20,7 @@ const register = (name, age, mobile, email, password, gender, type, position, co
                 return {
                     statuscode: 200,
                     status: true,
-                    message: "user created successfully",
+                    message: `${type} created successfully`,
                     newUser
                 }
             }

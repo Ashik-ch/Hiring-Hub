@@ -27,6 +27,7 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 @NgModule({
   declarations: [
     AppComponent,
+
     
 
   ],

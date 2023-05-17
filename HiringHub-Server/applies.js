@@ -2,8 +2,6 @@
 
 const db = require('./db')
 
-
-
 const apply = (name, email, jobname, company, status) => {
     return db.Apply.findOne({ email, jobname, company })
         .then(data => {
@@ -15,21 +13,6 @@ const apply = (name, email, jobname, company, status) => {
                     message: "Job Already Applied"
                 }
             }
-            // else {
-            //     return db.Apply.findOne({ email, company })
-            //         .then(data => {
-
-            //             if (data) {
-            //                 data.jobname.push(jobname, place, image, pincode)
-            //                 data.save()
-            //                 console.log("saved", data);
-            //                 return {
-            //                     statuscode: 200,
-            //                     status: true,
-            //                     message: "Job Added",
-            //                     data
-            //                 }
-            //             }
             else {
                 const newApply = new db.Apply({ name, email, jobname, company, status })
                 newApply.save()
@@ -40,15 +23,9 @@ const apply = (name, email, jobname, company, status) => {
                     newApply
                 }
             }
-
-        }
-        )
+        })
 }
 
-
-
-
-// to get applied list to admin
 const appliedlist = () => {
     return db.Apply.find()
         .then(data => {

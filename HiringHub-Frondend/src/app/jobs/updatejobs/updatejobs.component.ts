@@ -35,11 +35,15 @@ export class UpdatejobsComponent {
   ngOnInit() {
 
     this.ar.params
-      .subscribe((data) => {
-        this.paramsid = data['id']
-        console.log("paramsid", this.paramsid);
-
+      .subscribe((result) => {
+        this.paramsid = result
+        this.paramsid = this.paramsid.id
+        console.log("params", this.paramsid);
       })
+
+
+
+
     this.serv.updatecard(this.paramsid)
       .subscribe((result) => {
         console.log("ressult", result);
@@ -53,6 +57,9 @@ export class UpdatejobsComponent {
 
 
   updatejob(form: any) {
+    console.log("Form", form);
+    console.log("paramsid", this.paramsid);
+
     this.serv.updatejob(this.paramsid, form.value.jobname, form.value.company, form.value.description,
       form.value.place, form.value.pincode, form.value.number, form.value.time, form.value.image)
       .subscribe((result: any) => {

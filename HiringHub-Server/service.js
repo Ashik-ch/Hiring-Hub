@@ -50,10 +50,10 @@ const joblist = () => {
 
 
 //to get pertiular job card view
-const jobcardview = (id) => {
-    return db.Job.find({ id })
+const jobcardview = (uniqueNumber) => {
+    console.log("uniqueNumber", uniqueNumber);
+    return db.Job.find({ uniqueNumber })
         .then(data => {
-            console.log('job', data);
             if (data) {
                 return {
                     statuscode: 200,
@@ -92,8 +92,8 @@ const deletejob = (id) => {
 
 
 // update
-const updatejob = (id, jobname, company, description, place, pincode, number, time, image) => {
-    return db.Job.findOneAndUpdate({ id }, { jobname, company, description, place, pincode, number, time, image })
+const updatejob = (uniqueNumber, jobname, company, description, place, pincode, number, time, image) => {
+    return db.Job.findOneAndUpdate({ uniqueNumber }, { jobname, company, description, place, pincode, number, time, image })
         .then(data => {
             if (data) {
                 // const newJob = new db.Job({ id, jobname, company, description, place, pincode, number, time, image })
@@ -270,4 +270,4 @@ const profile = (email) => {
 
 
 //export
-module.exports = { addjob, joblist, jobcardview, deletejob, feedback,  profile, updatejob }
+module.exports = { addjob, joblist, jobcardview, deletejob, feedback, profile, updatejob }

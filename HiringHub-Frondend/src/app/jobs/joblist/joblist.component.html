@@ -49,7 +49,7 @@
 
                                 <input type="text" class="form-control" placeholder="number" [(ngModel)]="number"
                                     name="number">
-                                <input type="file" class="form-control mt-3" placeholder="Image" [(ngModel)]="image"
+                                <input type="text" class="form-control mt-3" placeholder="Image" [(ngModel)]="image"
                                     name="image"><br>
                                 <input type="text" class="form-control" placeholder="Date" [(ngModel)]="time"
                                     name="Date">
@@ -121,15 +121,15 @@
                 <td>{{t.status}}</td>
 
                 <td style="width: 40px;">
-                    <a href="jobs/update/{{t.id}}">
+                    <a href="jobs/update/{{t.uniqueNumber}}">
                         <button type="button" class="btn btn-link btn-sm btn-rounded">
                             <i class=" fa-solid fa-file-pen "></i> </button></a>
                     <hr>
                     <button type=" button" class="btn btn-link btn-sm btn-rounded" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop" (click)="deletebtn(t.id)">
+                        data-bs-target="#staticBackdrop" (click)="deletebtn(t.uniqueNumber)">
                         <i class="fa-solid fa-trash-can"></i> </button>
 
-                
+
 
                 </td>
             </tr>

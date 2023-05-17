@@ -37,7 +37,9 @@ const Job = mongoose.model('Job', {
         type: String,
         enum: ['Pending', 'Verified', 'Rejected'],
         default: 'Pending'
-    }
+    },  
+    uniqueNumber: { type: String, default: () => new mongoose.Types.ObjectId() },
+
 })
 
 const Feedback = mongoose.model('Feedback', {
