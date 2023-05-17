@@ -6,6 +6,9 @@
 // import express inside index.js file
 const express = require('express')
 
+const nodemailer = require('nodemailer');
+
+
 // importing dataservice
 const auth = require('./authentcation')
 const service = require('./service')
@@ -62,17 +65,17 @@ app.get('/jobs', (req, res) => {
 })
 
 //to get pertiular job card view
-app.get('/jobview/:uniqueNumber', (req, res) => {   
-       service.jobcardview(req.params.uniqueNumber)
+app.get('/jobview/:uniqueNumber', (req, res) => {
+    service.jobcardview(req.params.uniqueNumber)
         .then(data => {
-                    res.status(data.statuscode).json(data)
+            res.status(data.statuscode).json(data)
         })
 })
 
 
 // update
 app.put('/jobs/update/:uniqueNumber', (req, res) => {
-    console.log("req.params.uniqueNumber",req.params.uniqueNumber,req.body);
+    console.log("req.params.uniqueNumber", req.params.uniqueNumber, req.body);
     service.updatejob(req.params.uniqueNumber, req.body.jobname, req.body.company, req.body.description, req.body.place, req.body.pincode, req.body.number, req.body.time, req.body.image)
         .then(data => {
             console.log("updateRes", data);
@@ -95,12 +98,10 @@ app.delete('/joblist/:id', (req, res) => {
 app.put('/verifyjob', async (req, res) => {
     try {
         const item = req.body;
-        console.log("item", item);
         db.Job.updateOne(
             { jobname: item.jobname },
             { status: item.status })
             .then((document) => {
-                console.log("Doc", document);
                 res.json(document);
             });
     } catch (err) {
@@ -150,14 +151,39 @@ app.put('/apply', async (req, res) => {
     try {
         const item = req.body;
         console.log("status", item.status);
-        console.log("statussss", item);
-
         const result = await db.Apply.updateOne(
             { jobname: item.jobname, company: item.company, email: item.email },
             { status: item.status }
         );
-        console.log("applyres", result);
         res.json(result);
+
+        // Send an email notification to the hiring manager.
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'ashikch711@gmail.com',
+                pass: 'jgfaphigdkvlceno'
+            }
+        });
+        const mailOptions = {
+            from: {
+                address: "ashikch711@gmail.com",
+                name: "Hiring Hub"
+            },
+            to: `${item.email}`,
+            subject: ` ${item.jobname} Application approved`,
+            text: `Hy,
+    Application  "${item.jobname}"  has been approved  to "${item.company}". Our team will contact you for interview `
+        };
+        transporter.sendMail(mailOptions, (err, info) => {
+            if (err) {
+                console.log('Error sending email:', err);
+            } else {
+                console.log('Email sent successfully!', info);
+            }
+        });
+
+
     } catch (err) {
         console.log("err", err);
     }

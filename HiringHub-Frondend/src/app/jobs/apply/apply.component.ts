@@ -33,19 +33,16 @@ export class ApplyComponent implements OnInit {
         console.log("Elements:", this.elements)
 
         this.newelem = this.elements.filter((item: any) => {
-          console.log("IT", item);
 
           const check = item.company === this.company;
           console.log("check", check);
 
           return check;
         });
-        console.log("this.newelem", this.newelem)
-        this.elements = this.newelem
-
-
-        console.log("list", this.elements);
-        console.log("length of array:", this.len = this.elements.length);
+        // console.log("this.newelem", this.newelem)
+        // this.elements = this.newelem
+        // console.log("list", this.elements);
+        // console.log("length of array:", this.len = this.elements.length);
       })
   }
 
